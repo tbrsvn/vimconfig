@@ -15,8 +15,12 @@ set incsearch
 set clipboard=unnamedplus
 vnoremap <C-c> "+y
 map <C-p> "+P
+" Enable Colors In The Terminal
+set termguicolors
 " Highlight The Line Currently Under Cursor
 set cursorline
+" Update Plugins
+autocmd VimEnter * UpdateRemotePlugins
 " Enable Mouse
 set mouse=a
 " Show The File Currently Being Edited
@@ -25,8 +29,6 @@ set title
 set confirm
 " Enable Spellchecking
 set spell
-" Disables Swap
-set noswapfile
 " Set History Higher
 set history=10000
 " Hide Tilde's
@@ -59,24 +61,31 @@ autocmd BufWritePre * %s/\s\+$//e
 call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'feline-nvim/feline.nvim'
+  Plug 'tpope/vim-fugitive'
   Plug 'catppuccin/nvim'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'tc50cal/vim-terminal'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'frabjous/knap'
-  Plug 'github/copilot.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 call plug#end()
 " Setup The Plugins
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
-let g:coc_disable_startup_warning = 1
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+lua require('feline').setup()
+let g:coc_disable_startup_warning = 1
+lua require('gitsigns').setup()
 " Theme
 colorscheme catppuccin-mocha
 set background=dark
 " Config Plugin Shortcuts
+" Knap
 " F5 processes the document once, and refreshes the view "
 inoremap <silent> <F5> <C-o>:lua require("knap").process_once()<CR>
 vnoremap <silent> <F5> <C-c>:lua require("knap").process_once()<CR>
@@ -103,6 +112,12 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+" Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 " Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -127,5 +142,5 @@ endif
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-snippets', 'coc-css', 'coc-cssmodules', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
 
 " --- Just Some Notes About Installing Plugins ---
-" :PlugClean :PlugInstall :UpdateRemotePlugins
+" :PlugInstall :PlugClean :UpdateRemotePlugins
 " :CocInstall coc-json coc-tsserver coc-html coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-texlab coc-xml coc-yaml
