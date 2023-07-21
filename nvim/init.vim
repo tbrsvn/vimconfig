@@ -62,6 +62,11 @@ call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'feline-nvim/feline.nvim'
+  Plug 'Eandrju/cellular-automaton.nvim'
+  Plug 'CRAG666/code_runner.nvim'
+  Plug 'alec-gibson/nvim-tetris'
+  Plug 'ThePrimeagen/vim-be-good'
+  Plug ''
   Plug 'tpope/vim-fugitive'
   Plug 'catppuccin/nvim'
   Plug 'tpope/vim-surround'
@@ -79,8 +84,10 @@ let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 lua require('feline').setup()
-let g:coc_disable_startup_warning = 1
+lua require("killersheep").setup
+lua require('code_runner').setup()
 lua require('gitsigns').setup()
+let g:coc_disable_startup_warning = 1
 " Theme
 colorscheme catppuccin-mocha
 set background=dark
