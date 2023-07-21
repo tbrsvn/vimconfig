@@ -55,7 +55,7 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-" Remap S Which = cc To Find And Replace
+" Remap S Which Is Equal To The Command cc To A Find And Replace Function
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
@@ -102,7 +102,9 @@ let g:coc_disable_startup_warning = 1
 colorscheme catppuccin-mocha
 set background=dark
 " Config Plugin Shortcuts
+
 " Knap
+
 " F5 processes the document once, and refreshes the view "
 inoremap <silent> <F5> <C-o>:lua require("knap").process_once()<CR>
 vnoremap <silent> <F5> <C-c>:lua require("knap").process_once()<CR>
