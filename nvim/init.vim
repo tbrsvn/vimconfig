@@ -66,7 +66,7 @@ call plug#begin()
   Plug 'CRAG666/code_runner.nvim'
   Plug 'alec-gibson/nvim-tetris'
   Plug 'ThePrimeagen/vim-be-good'
-  Plug ''
+  Plug 'seandewar/killersheep.nvim'
   Plug 'tpope/vim-fugitive'
   Plug 'catppuccin/nvim'
   Plug 'tpope/vim-surround'
