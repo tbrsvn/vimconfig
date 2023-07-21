@@ -60,7 +60,6 @@ autocmd BufWritePre * %s/\s\+$//e
 " Plugins
 call plug#begin()
   Plug 'feline-nvim/feline.nvim'
-  Plug ''
   Plug 'numToStr/Comment.nvim'
   Plug 'Eandrju/cellular-automaton.nvim'
   Plug 'CRAG666/code_runner.nvim'
