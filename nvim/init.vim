@@ -6,6 +6,8 @@ set wrap
 set encoding=utf-8
 " Status Bar
 set laststatus=2
+" Show Current Command
+set showcmd
 " Avoid Wrapping A Line In The Middle Of A Word
 set linebreak
 " Make Searching Better
