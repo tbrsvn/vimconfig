@@ -59,9 +59,9 @@ nnoremap S :%s//g<Left><Left>
 autocmd BufWritePre * %s/\s\+$//e
 " Plugins
 call plug#begin()
-  Plug 'preservim/nerdtree' |
-              \ Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'feline-nvim/feline.nvim'
+  Plug ''
+  Plug 'numToStr/Comment.nvim'
   Plug 'Eandrju/cellular-automaton.nvim'
   Plug 'CRAG666/code_runner.nvim'
   Plug 'alec-gibson/nvim-tetris'
@@ -71,12 +71,16 @@ call plug#begin()
   Plug 'catppuccin/nvim'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
+  Plug 'alanfortlink/blackjack.nvim'
   Plug 'tc50cal/vim-terminal'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'frabjous/knap'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+  Plug 'preservim/nerdtree' |
+              \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 " Setup The Plugins
 let g:NERDTreeDirArrowExpandable="+"
@@ -84,8 +88,10 @@ let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 lua require('feline').setup()
-lua require("killersheep").setup
+lua require('killersheep').setup
 lua require('code_runner').setup()
+lua require('Comment').setup()
+lua require('neoscroll').setup()
 lua require('gitsigns').setup()
 let g:coc_disable_startup_warning = 1
 " Theme
