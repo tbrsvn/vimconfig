@@ -73,6 +73,8 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'alanfortlink/blackjack.nvim'
   Plug 'tc50cal/vim-terminal'
+  Plug 'NvChad/nvim-colorizer.lua'
+  Plug 'jghauser/mkdir.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'frabjous/knap'
   Plug 'karb94/neoscroll.nvim'
@@ -93,6 +95,7 @@ lua require('code_runner').setup()
 lua require('Comment').setup()
 lua require('neoscroll').setup()
 lua require('gitsigns').setup()
+lua require("colorizer").attach_to_buffer(0, { mode = "background", css = true})
 let g:coc_disable_startup_warning = 1
 " Theme
 colorscheme catppuccin-mocha
