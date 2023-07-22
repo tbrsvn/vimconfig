@@ -24,8 +24,6 @@ map <C-p> "+P
 set termguicolors
 " Highlight The Line Currently Under Cursor
 set cursorline
-" Update Plugins
-autocmd VimEnter * silent! UpdateRemotePlugins
 " Enable Mouse
 set mouse=a
 " Show The File Currently Being Edited
@@ -103,7 +101,10 @@ endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC | PlugClean
 \| endif
+" Update Plugins
+autocmd VimEnter * silent! UpdateRemotePlugins
 " Setup The Plugins
+let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
