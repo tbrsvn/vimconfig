@@ -7,6 +7,8 @@ set wrap
 set encoding=utf-8
 " Status Bar
 set laststatus=2
+" No Startup Text
+set shortmess=I
 " Show Current Command
 set showcmd
 " Avoid Wrapping A Line In The Middle Of A Word
