@@ -73,6 +73,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'catppuccin/nvim'
   Plug 'tpope/vim-surround'
+  Plug 'Norok-The-Diablo/minesweeper.nvim'
   Plug 'tpope/vim-commentary'
   Plug 'alanfortlink/blackjack.nvim'
   Plug 'tc50cal/vim-terminal'
