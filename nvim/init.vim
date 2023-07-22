@@ -79,6 +79,7 @@ call plug#begin()
   Plug 'NvChad/nvim-colorizer.lua'
   Plug 'jghauser/mkdir.nvim'
   Plug 'lewis6991/gitsigns.nvim'
+  Plug 'seandewar/nvimesweeper'
   Plug 'frabjous/knap'
   Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-lua/plenary.nvim'
