@@ -25,7 +25,7 @@ set termguicolors
 " Highlight The Line Currently Under Cursor
 set cursorline
 " Update Plugins
-autocmd VimEnter * UpdateRemotePlugins
+autocmd VimEnter * silent! UpdateRemotePlugins
 " Enable Mouse
 set mouse=a
 " Show The File Currently Being Edited
