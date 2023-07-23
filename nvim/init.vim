@@ -107,6 +107,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 " Update Plugins
 autocmd VimEnter * silent! UpdateRemotePlugins
+" Theme
+colorscheme catppuccin-mocha
+set background=dark
 " Setup The Plugins
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
@@ -121,11 +124,6 @@ lua require('neoscroll').setup()
 lua require('gitsigns').setup()
 lua require("colorizer").attach_to_buffer(0, { mode = "background", css = true})
 let g:coc_disable_startup_warning = 1
-" Theme
-colorscheme catppuccin-mocha
-set background=dark
-" Wordle Plugin
-
 " Config Plugin Shortcuts
 " Knap
 " F5 processes the document once, and refreshes the view "
