@@ -88,7 +88,7 @@ function! s:wordle() abort
   call nvim_buf_set_keymap(buf, 'n', '<ESC>', "<Cmd>call nvim_win_close(win, v:true)<CR>", keymaps_opts)
   " command
   if
-    let cmd = "python3 C:\Usersmain.py"    
+    let cmd = "python3 C:\Users\%USERNAME%\AppData\Local\nvim\wordle\main.py"    
   else
     let cmd = "python3 ~/.config/nvim/wordle/main.py"
   call termopen(cmd)
