@@ -91,6 +91,7 @@ function! s:wordle() abort
     let cmd = "python3 C:\Users\%USERNAME%\AppData\Local\nvim\wordle\main.py"    
   else
     let cmd = "python3 ~/.config/nvim/wordle/main.py"
+  endif
   call termopen(cmd)
 endfunction
 command! -nargs=0 Wordle call s:wordle()
