@@ -29,7 +29,7 @@ local function wordle()
   vim.keymap.set('n', "<ESC>", function() vim.api.nvim_win_close(win, true) end, keymaps_opts)
 
   -- command
-  if
+  if has("win64") || has("win32") || has("win16")
     local cmd = "python3 ~/Downloads/wordle.py"
   else
     local cmd = "python3 ~/.config/nvim/wordle/main.py"
