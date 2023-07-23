@@ -87,7 +87,7 @@ function! s:wordle() abort
   call nvim_buf_set_keymap(buf, 'n', 'q', "<Cmd>call nvim_win_close(win, v:true)<CR>", keymaps_opts)
   call nvim_buf_set_keymap(buf, 'n', '<ESC>', "<Cmd>call nvim_win_close(win, v:true)<CR>", keymaps_opts)
   " command
-  if
+  if has("win64") || has("win32") || has("win16")
     let cmd = "python3 C:\Users\%USERNAME%\AppData\Local\nvim\wordle\main.py"    
   else
     let cmd = "python3 ~/.config/nvim/wordle/main.py"
