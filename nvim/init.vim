@@ -60,6 +60,8 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
+" Wordle
+autocmd VimEnter * luafile wordle.lua
 " Plugins
 call plug#begin()
   Plug 'feline-nvim/feline.nvim'
