@@ -91,8 +91,8 @@ local function wordle()
     local cmd = "python3 C:\Users\%USERNAME%\AppData\Local\nvim\wordle\main.py"
   else
     local cmd = "python3 ~/.config/nvim/wordle/main.py"
-  vim.fn.termopen(cmd)
   endif
+  vim.fn.termopen(cmd)
 end
 vim.api.nvim_create_user_command("Wordle", wordle, { nargs = 0 })
 " Plugins
