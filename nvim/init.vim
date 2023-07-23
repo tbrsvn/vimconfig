@@ -92,10 +92,11 @@ local function wordle()
   else
     local cmd = "python3 ~/.config/nvim/wordle/main.py"
   vim.fn.termopen(cmd)
+  endif
 end
 vim.api.nvim_create_user_command("Wordle", wordle, { nargs = 0 })
 " Plugins
-call plug#begin
+call plug#begin()
   Plug 'feline-nvim/feline.nvim'
   Plug 'numToStr/Comment.nvim'
   Plug 'CRAG666/code_runner.nvim'
