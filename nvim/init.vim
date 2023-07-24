@@ -74,77 +74,40 @@ else
 endif
 set undofile
 " Plugins
-if has("win64") || has("win32") || has("win16")
-  call plug#begin(C:\Users\%USERNAME%\AppData\Local\nvim\plugged)
-    Plug 'nacro90/numb.nvim'
-    Plug 'numToStr/Comment.nvim'
-    Plug 'EtiamNullam/deferred-clipboard.nvim'
-    Plug 'CRAG666/code_runner.nvim'
-    Plug 'alec-gibson/nvim-tetris'
-    Plug 'luochen1990/rainbow'
-    Plug 'ThePrimeagen/vim-be-good'
-    Plug 'seandewar/killersheep.nvim'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tamton-aquib/duck.nvim'
-    Plug 'chrisgrieser/nvim-genghis'
-    Plug 'mistweaverco/Screenshot.nvim'
-    Plug 'gbprod/stay-in-place.nvim'
-    Plug 'tpope/vim-surround'
-    Plug 'Norok-The-Diablo/minesweeper.nvim'
-    Plug 'tpope/vim-commentary'
-    Plug 'alanfortlink/blackjack.nvim'
-    Plug 'tc50cal/vim-terminal'
-    Plug 'NvChad/nvim-colorizer.lua'
-    Plug 'jghauser/mkdir.nvim'
-    Plug 'lewis6991/gitsigns.nvim'
-    Plug 'seandewar/nvimesweeper'
-    Plug 'frabjous/knap'
-    Plug 'karb94/neoscroll.nvim'
-    Plug 'nvim-tree/nvim-web-devicons'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'catppuccin/nvim'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
-    Plug 'preservim/nerdtree' |
-                \ Plug 'Xuyuanp/nerdtree-git-plugin'
-  call plug#end()
-else
-  call plug#begin(~/.config/nvim/plugged)
-    Plug 'nacro90/numb.nvim'
-    Plug 'numToStr/Comment.nvim'
-    Plug 'EtiamNullam/deferred-clipboard.nvim'
-    Plug 'CRAG666/code_runner.nvim'
-    Plug 'alec-gibson/nvim-tetris'
-    Plug 'luochen1990/rainbow'
-    Plug 'ThePrimeagen/vim-be-good'
-    Plug 'seandewar/killersheep.nvim'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tamton-aquib/duck.nvim'
-    Plug 'chrisgrieser/nvim-genghis'
-    Plug 'mistweaverco/Screenshot.nvim'
-    Plug 'gbprod/stay-in-place.nvim'
-    Plug 'tpope/vim-surround'
-    Plug 'Norok-The-Diablo/minesweeper.nvim'
-    Plug 'tpope/vim-commentary'
-    Plug 'alanfortlink/blackjack.nvim'
-    Plug 'tc50cal/vim-terminal'
-    Plug 'NvChad/nvim-colorizer.lua'
-    Plug 'jghauser/mkdir.nvim'
-    Plug 'lewis6991/gitsigns.nvim'
-    Plug 'seandewar/nvimesweeper'
-    Plug 'frabjous/knap'
-    Plug 'karb94/neoscroll.nvim'
-    Plug 'nvim-tree/nvim-web-devicons'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'catppuccin/nvim'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
-    Plug 'preservim/nerdtree' |
-                \ Plug 'Xuyuanp/nerdtree-git-plugin'
-  call plug#end()
-endif
+call plug#begin()
+  Plug 'nacro90/numb.nvim'
+  Plug 'numToStr/Comment.nvim'
+  Plug 'EtiamNullam/deferred-clipboard.nvim'
+  Plug 'CRAG666/code_runner.nvim'
+  Plug 'alec-gibson/nvim-tetris'
+  Plug 'luochen1990/rainbow'
+  Plug 'ThePrimeagen/vim-be-good'
+  Plug 'seandewar/killersheep.nvim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tamton-aquib/duck.nvim'
+  Plug 'chrisgrieser/nvim-genghis'
+  Plug 'mistweaverco/Screenshot.nvim'
+  Plug 'gbprod/stay-in-place.nvim'
+  Plug 'tpope/vim-surround'
+  Plug 'Norok-The-Diablo/minesweeper.nvim'
+  Plug 'tpope/vim-commentary'
+  Plug 'alanfortlink/blackjack.nvim'
+  Plug 'tc50cal/vim-terminal'
+  Plug 'NvChad/nvim-colorizer.lua'
+  Plug 'jghauser/mkdir.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'seandewar/nvimesweeper'
+  Plug 'frabjous/knap'
+  Plug 'karb94/neoscroll.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'catppuccin/nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+  Plug 'preservim/nerdtree' |
+              \ Plug 'Xuyuanp/nerdtree-git-plugin'
+call plug#end()
 " Install vim-plug if not found
 if has("win64") || has("win32") || has("win16")
   if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
