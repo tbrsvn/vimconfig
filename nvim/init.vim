@@ -147,6 +147,12 @@ require('lualine').setup {
 }
 EOF
 lua << EOF
+local nvimbattery = {
+  function()
+    return require("battery").get_status_line()
+  end
+EIF
+lua << EOF
 require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
@@ -170,10 +176,6 @@ lua require('numb').setup()
 lua require("colorizer").attach_to_buffer(0, { mode = "background", css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
-local nvimbattery = {
-  function()
-    return require("battery").get_status_line()
-  end
 " Config Plugin Shortcuts
 " Knap
 " F5 processes the document once, and refreshes the view "
