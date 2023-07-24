@@ -16,8 +16,6 @@ set linebreak
 " Make Searching Better
 set hlsearch
 set incsearch
-" Clipboard
-set clipboard=unnamedplus
 vnoremap <C-c> "+y
 map <C-p> "+P
 " Enable Colors In The Terminal
@@ -64,6 +62,7 @@ autocmd BufWritePre * %s/\s\+$//e
 call plug#begin()
   Plug 'nacro90/numb.nvim'
   Plug 'numToStr/Comment.nvim'
+  Plug 'EtiamNullam/deferred-clipboard.nvim'
   Plug 'CRAG666/code_runner.nvim'
   Plug 'alec-gibson/nvim-tetris'
   Plug 'luochen1990/rainbow'
@@ -120,6 +119,11 @@ require('lualine').setup {
     options = {
         theme = "catppuccin"
     }
+}
+EOF
+lua << EOF
+require('deferred-clipboard').setup {
+  fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
 EOF
 " Setup The Plugins
