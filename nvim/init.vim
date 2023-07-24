@@ -142,7 +142,7 @@ require('lualine').setup {
         lualine_c = {'filename'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'location'},
-        lualine_z = {', os.date("%I:%M:%S", os.time())}
+        lualine_z = {'nvimbattery, os.date("%I:%M:%S", os.time())}
   }
 }
 EOF
@@ -170,6 +170,10 @@ lua require('numb').setup()
 lua require("colorizer").attach_to_buffer(0, { mode = "background", css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
+local nvimbattery = {
+  function()
+    return require("battery").get_status_line()
+  end
 " Config Plugin Shortcuts
 " Knap
 " F5 processes the document once, and refreshes the view "
