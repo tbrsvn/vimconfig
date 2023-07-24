@@ -18,10 +18,18 @@ set hlsearch
 set incsearch
 vnoremap <C-c> "+y
 map <C-p> "+P
+" Use persistent history.
+if !isdirectory("/tmp/.nvim-undo-dir")
+    call mkdir("/tmp/.nvim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.nvim-undo-dir
+set undofile
 " Enable Colors In The Terminal
 set termguicolors
 " Highlight The Line Currently Under Cursor
 set cursorline
+" Make Update Time Smaller
+set updatetime=250
 " Enable Mouse
 set mouse=a
 " Show The File Currently Being Edited
