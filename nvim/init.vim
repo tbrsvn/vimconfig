@@ -18,18 +18,6 @@ set hlsearch
 set incsearch
 vnoremap <C-c> "+y
 map <C-p> "+P
-" Use persistent history.
-if has("win64") || has("win32") || has("win16")
-  if !isdirectory("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir")
-    silent! call mkdir("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir", "", 0700)
-  endif
-else
-  if !isdirectory("/tmp/.nvim-undo-dir")
-    silent! call mkdir("/tmp/.nvim-undo-dir", "", 0700)
-  endif
-endif
-set undodir=/tmp/.nvim-undo-dir
-set undofile
 " Enable Colors In The Terminal
 set termguicolors
 " Highlight The Line Currently Under Cursor
@@ -72,6 +60,19 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
+" Backup History
+if has("win64") || has("win32") || has("win16")
+  if !isdirectory("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir")
+   silent! call mkdir("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir", "", 0700)
+   set undodir=C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir
+  endif
+else
+  if !isdirectory("/tmp/.nvim-undo-dir")
+    silent! call mkdir("/tmp/.nvim-undo-dir", "", 0700)
+    set undodir=/tmp/.nvim-undo-dir
+  endif
+endif
+set undofile
 " Plugins
 call plug#begin()
   Plug 'nacro90/numb.nvim'
