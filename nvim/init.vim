@@ -131,7 +131,6 @@ let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-lua require('feline').setup()
 lua require('killersheep').setup()
 lua require('code_runner').setup()
 lua require('Comment').setup()
