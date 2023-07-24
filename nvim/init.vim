@@ -150,10 +150,10 @@ let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('code_runner').setup()
 lua require('Comment').setup()
-lua require('neoscroll').setup()
 lua require('gitsigns').setup()
 lua require('numb').setup()
 lua require("colorizer").attach_to_buffer(0, { mode = "background", css = true})
