@@ -87,6 +87,7 @@ call plug#begin()
   Plug 'seandewar/nvimesweeper'
   Plug 'frabjous/knap'
   Plug 'karb94/neoscroll.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
