@@ -19,8 +19,14 @@ set incsearch
 vnoremap <C-c> "+y
 map <C-p> "+P
 " Use persistent history.
-if !isdirectory("/tmp/.nvim-undo-dir")
+if has("win64") || has("win32") || has("win16")
+  if !isdirectory("/tmp/.nvim-undo-dir")
     call mkdir("/tmp/.nvim-undo-dir", "", 0700)
+  endif
+else
+  if !isdirectory("/tmp/.nvim-undo-dir")
+    call mkdir("/tmp/.nvim-undo-dir", "", 0700)
+  endif
 endif
 set undodir=/tmp/.nvim-undo-dir
 set undofile
