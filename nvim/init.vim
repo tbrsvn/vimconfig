@@ -66,6 +66,7 @@ call plug#begin()
   Plug 'numToStr/Comment.nvim'
   Plug 'CRAG666/code_runner.nvim'
   Plug 'alec-gibson/nvim-tetris'
+  Plug 'luochen1990/rainbow'
   Plug 'ThePrimeagen/vim-be-good'
   Plug 'seandewar/killersheep.nvim'
   Plug 'tpope/vim-fugitive'
@@ -121,6 +122,7 @@ lua require('Comment').setup()
 lua require('neoscroll').setup()
 lua require('gitsigns').setup()
 lua require("colorizer").attach_to_buffer(0, { mode = "background", css = true})
+let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
 " Config Plugin Shortcuts
 " Knap
