@@ -189,6 +189,6 @@ else
 endif
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-snippets', 'coc-css', 'coc-cssmodules', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
 
-" --- Just Some Notes About Installing Plugins ---
+" --- Notes About Installing Plugins ---
 " :PlugInstall :PlugClean :UpdateRemotePlugins
 " :CocInstall coc-json coc-tsserver coc-html coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-texlab coc-xml coc-yaml
