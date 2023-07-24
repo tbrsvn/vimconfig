@@ -62,7 +62,6 @@ nnoremap S :%s//g<Left><Left>
 autocmd BufWritePre * %s/\s\+$//e
 " Plugins
 call plug#begin()
-  Plug 'feline-nvim/feline.nvim'
   Plug 'nacro90/numb.nvim'
   Plug 'numToStr/Comment.nvim'
   Plug 'CRAG666/code_runner.nvim'
@@ -71,7 +70,6 @@ call plug#begin()
   Plug 'ThePrimeagen/vim-be-good'
   Plug 'seandewar/killersheep.nvim'
   Plug 'tpope/vim-fugitive'
-  Plug 'catppuccin/nvim'
   Plug 'tamton-aquib/duck.nvim'
   Plug 'chrisgrieser/nvim-genghis'
   Plug 'mistweaverco/Screenshot.nvim'
@@ -89,6 +87,8 @@ call plug#begin()
   Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'catppuccin/nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
   Plug 'preservim/nerdtree' |
@@ -115,6 +115,13 @@ autocmd VimEnter * silent! UpdateRemotePlugins
 " Theme
 colorscheme catppuccin-mocha
 set background=dark
+lua >> EOF
+require('lualine').setup {
+    options = {
+        theme = "catppuccin"
+    }
+}
+EOF
 " Setup The Plugins
 let g:rainbow_conf = {
   \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4'],
