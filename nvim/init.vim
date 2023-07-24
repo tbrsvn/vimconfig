@@ -199,7 +199,13 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "Lualine Clock
-
+if _G.Statusline_timer == nil then
+    _G.Statusline_timer = vim.loop.new_timer()
+else
+    _G.Statusline_timer:stop()
+end
+_G.Statusline_timer:start(0, 1000, vim.schedule_wrap(
+                              function() vim.api.nvim_command('redrawstatus') end))
 " Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
