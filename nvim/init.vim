@@ -111,7 +111,7 @@ colorscheme catppuccin-mocha
 set background=dark
 " Setup The Plugins
 let g:rainbow_conf = {
-\ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4'],
+  \'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4'],
 \}
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
