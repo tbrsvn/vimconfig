@@ -75,7 +75,7 @@ endif
 set undofile
 " Plugins
 if has("win64") || has("win32") || has("win16")
-  call plug#begin()
+  call plug#begin(C:\Users\%USERNAME%\AppData\Local\nvim\plugged)
     Plug 'nacro90/numb.nvim'
     Plug 'numToStr/Comment.nvim'
     Plug 'EtiamNullam/deferred-clipboard.nvim'
