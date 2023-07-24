@@ -115,7 +115,7 @@ autocmd VimEnter * silent! UpdateRemotePlugins
 " Theme
 colorscheme catppuccin-mocha
 set background=dark
-lua >> EOF
+lua << EOF
 require('lualine').setup {
     options = {
         theme = "catppuccin"
