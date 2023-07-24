@@ -21,11 +21,11 @@ map <C-p> "+P
 " Use persistent history.
 if has("win64") || has("win32") || has("win16")
   if !isdirectory("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir")
-    call mkdir("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir", "", 0700)
+    silent! call mkdir("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir", "", 0700)
   endif
 else
   if !isdirectory("/tmp/.nvim-undo-dir")
-    call mkdir("/tmp/.nvim-undo-dir", "", 0700)
+    silent! call mkdir("/tmp/.nvim-undo-dir", "", 0700)
   endif
 endif
 set undodir=/tmp/.nvim-undo-dir
