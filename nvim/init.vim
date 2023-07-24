@@ -98,6 +98,7 @@ call plug#begin()
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'seandewar/nvimesweeper'
   Plug 'frabjous/knap'
+  Plug 'justinhj/battery.nvim'
   Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
@@ -132,8 +133,17 @@ set background=dark
 lua << EOF
 require('lualine').setup {
     options = {
-        theme = "catppuccin"
-    }
+        theme = "catppuccin",
+        icons_enabled = true
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {'filename'},
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = {'location'},
+        lualine_z = {', os.date("%I:%M:%S", os.time())}
+  }
 }
 EOF
 lua << EOF
@@ -150,6 +160,7 @@ let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+lua require('battery').setup({update_rate_seconds = 5, show_status_when_no_battery = false})
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('code_runner').setup()
@@ -187,6 +198,8 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"Lualine Clock
+
 " Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
