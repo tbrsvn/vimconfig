@@ -151,7 +151,7 @@ require('lualine').setup {
         lualine_c = {'filename'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'location'},
-        lualine_z = {nvimbattery, 'ctime'}
+        lualine_z = {battery, 'ctime'}
   }
 }
 EOF
