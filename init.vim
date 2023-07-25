@@ -110,7 +110,7 @@ call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
-lua require'battery'.setup({update_rate_seconds = 10, show_status_when_no_battery = false})
+lua require'battery'.setup({})
 " Install vim-plug if not found
 if has("win64") || has("win32") || has("win16")
   if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
@@ -136,9 +136,12 @@ lua << EOF
 local nvimbattery = {
   function()
     return require("battery").get_status_line()
-  end
+  end,
 }
 EOF
+let g:battery = '???'
+autocmd CursorHold * let g:battery = system('/bin/battery')
+set statusline+=%{g:battery}
 lua << EOF
 require('lualine').setup {
     options = {
