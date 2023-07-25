@@ -63,8 +63,8 @@ autocmd BufWritePre * %s/\s\+$//e
 " Backup History
 if has("win64") || has("win32") || has("win16")
   if !isdirectory("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir")
-   silent! call mkdir("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir", "", 0700)
-   set undodir=C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir
+    silent! call mkdir("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir", "", 0700)
+    set undodir=C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir
   endif
 else
   if !isdirectory("/tmp/.nvim-undo-dir")
@@ -94,14 +94,15 @@ call plug#begin()
   Plug 'alanfortlink/blackjack.nvim'
   Plug 'tc50cal/vim-terminal'
   Plug 'NvChad/nvim-colorizer.lua'
+  Plug 'justinhj/battery.nvim'
   Plug 'jghauser/mkdir.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'seandewar/nvimesweeper'
   Plug 'frabjous/knap'
-  Plug 'justinhj/battery.nvim'
   Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'archibate/lualine-time'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'catppuccin/nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -109,6 +110,7 @@ call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
+lua require'battery'.setup({update_rate_seconds = 10, show_status_when_no_battery = false})
 " Install vim-plug if not found
 if has("win64") || has("win32") || has("win16")
   if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
@@ -131,6 +133,13 @@ autocmd VimEnter * silent! UpdateRemotePlugins
 colorscheme catppuccin-mocha
 set background=dark
 lua << EOF
+local nvimbattery = {
+  function()
+    return require("battery").get_status_line()
+  end
+}
+EOF
+lua << EOF
 require('lualine').setup {
     options = {
         theme = "catppuccin",
@@ -142,55 +151,49 @@ require('lualine').setup {
         lualine_c = {'filename'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'location'},
-        lualine_z = {'nvimbattery', os.date("%I:%M:%S", os.time())}
+        lualine_z = {nvimbattery, 'ctime'}
   }
 }
 EOF
-lua << EOF
-local nvimbattery = {
-  function()
-    return require("battery").get_status_line()
-  end
-EIF
 lua << EOF
 require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
 EOF
-" Setup The Plugins
+" Setup The Files
 let g:rainbow_conf = {
-  \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4'],
+  \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4']
 \ }
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-lua require('battery').setup({update_rate_seconds = 5, show_status_when_no_battery = false})
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('code_runner').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('numb').setup()
-lua require("colorizer").attach_to_buffer(0, { mode = "background", css = true})
+lua require'battery'.setup({update_rate_seconds = 10, show_status_when_no_battery = false})
+lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
 " Config Plugin Shortcuts
 " Knap
-" F5 processes the document once, and refreshes the view "
+" F5 processes the document once, and refreshes the view
 inoremap <silent> <F5> <C-o>:lua require("knap").process_once()<CR>
 vnoremap <silent> <F5> <C-c>:lua require("knap").process_once()<CR>
 nnoremap <silent> <F5> :lua require("knap").process_once()<CR>
-" F6 closes the viewer application, and allows settings to be reset "
+" F6 closes the viewer application, and allows settings to be reset
 inoremap <silent> <F6> <C-o>:lua require("knap").close_viewer()<CR>
 vnoremap <silent> <F6> <C-c>:lua require("knap").close_viewer()<CR>
 nnoremap <silent> <F6> :lua require("knap").close_viewer()<CR>
-" F7 toggles the auto-processing on and off "
+" F7 toggles the auto-processing on and off
 inoremap <silent> <F7> <C-o>:lua require("knap").toggle_autopreviewing()<CR>
 vnoremap <silent> <F7> <C-c>:lua require("knap").toggle_autopreviewing()<CR>
 nnoremap <silent> <F7> :lua require("knap").toggle_autopreviewing()<CR>
-" F8 invokes a SyncTeX forward search, or similar, where appropriate "
+" F8 invokes a SyncTeX forward search, or similar, where appropriate
 inoremap <silent> <F8> <C-o>:lua require("knap").forward_jump()<CR>
 vnoremap <silent> <F8> <C-c>:lua require("knap").forward_jump()<CR>
 nnoremap <silent> <F8> :lua require("knap").forward_jump()<CR>
@@ -204,14 +207,6 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-"Lualine Clock
-if _G.Statusline_timer == nil then
-    _G.Statusline_timer = vim.loop.new_timer()
-else
-    _G.Statusline_timer:stop()
-end
-_G.Statusline_timer:start(0, 1000, vim.schedule_wrap(
-                              function() vim.api.nvim_command('redrawstatus') end))
 " Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
