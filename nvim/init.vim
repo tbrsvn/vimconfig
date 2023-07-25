@@ -94,7 +94,6 @@ call plug#begin()
   Plug 'alanfortlink/blackjack.nvim'
   Plug 'tc50cal/vim-terminal'
   Plug 'NvChad/nvim-colorizer.lua'
-  Plug 'justinhj/battery.nvim'
   Plug 'jghauser/mkdir.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'seandewar/nvimesweeper'
@@ -110,7 +109,6 @@ call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
-lua require'battery'.setup({update_rate_seconds = 10, show_status_when_no_battery = false})
 " Install vim-plug if not found
 if has("win64") || has("win32") || has("win16")
   if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
@@ -133,13 +131,6 @@ autocmd VimEnter * silent! UpdateRemotePlugins
 colorscheme catppuccin-mocha
 set background=dark
 lua << EOF
-local nvimbattery = {
-  function()
-    return require("battery").get_status_line()
-  end
-}
-EOF
-lua << EOF
 require('lualine').setup {
     options = {
         theme = "catppuccin",
@@ -151,7 +142,7 @@ require('lualine').setup {
         lualine_c = {'filename'},
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'location'},
-        lualine_z = {nvimbattery, 'ctime'}
+        lualine_z = {'cdate', 'ctime'}
   }
 }
 EOF
