@@ -139,9 +139,6 @@ local nvimbattery = {
   end
 }
 EOF
-let g:battery = '???'
-autocmd CursorHold * let g:battery = system('/bin/battery')
-set statusline+=%{g:battery}
 lua << EOF
 require('lualine').setup {
     options = {
