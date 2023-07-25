@@ -155,12 +155,7 @@ require('lualine').setup {
   }
 }
 EOF
-lua << EOF
-require('deferred-clipboard').setup {
-  fallback = 'unnamedplus', -- or your preferred setting for clipboard
-}
-EOF
-" Setup The Files
+" Setup The Plugins
 let g:rainbow_conf = {
   \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4']
 \ }
@@ -175,11 +170,15 @@ lua require('code_runner').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('numb').setup()
-lua require'battery'.setup({update_rate_seconds = 10, show_status_when_no_battery = false})
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
-" Config Plugin Shortcuts
+lua << EOF
+require('deferred-clipboard').setup {
+  fallback = 'unnamedplus', -- or your preferred setting for clipboard
+}
+EOF
+" Configure Plugin Shortcuts
 " Knap
 " F5 processes the document once, and refreshes the view
 inoremap <silent> <F5> <C-o>:lua require("knap").process_once()<CR>
