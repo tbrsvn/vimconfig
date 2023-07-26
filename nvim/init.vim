@@ -98,6 +98,7 @@ call plug#begin()
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'seandewar/nvimesweeper'
   Plug 'frabjous/knap'
+  Plug 'github/copilot.vim'
   Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
