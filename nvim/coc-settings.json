@@ -1,4 +1,5 @@
 {
+  "snippets.ultisnips.pythonPrompt": false,
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.snippets.enable": true,
   "coc.preferences.extensionUpdateCheck": "never",
