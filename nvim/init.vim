@@ -75,7 +75,6 @@ endif
 set undofile
 " Plugins
 call plug#begin()
-  Plug 'nacro90/numb.nvim'
   Plug 'numToStr/Comment.nvim'
   Plug 'EtiamNullam/deferred-clipboard.nvim'
   Plug 'CRAG666/code_runner.nvim'
@@ -161,7 +160,6 @@ lua require('killersheep').setup()
 lua require('code_runner').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
-lua require('numb').setup()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
