@@ -69,6 +69,7 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tc50cal/vim-terminal'
   Plug 'lervag/vimtex'
+  Plug 'pbrisbin/vim-mkdir'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree' |
