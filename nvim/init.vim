@@ -105,7 +105,8 @@ call plug#begin()
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'catppuccin/nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug "ibhagwan/fzf-lua", {"branch": "main"}
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
@@ -160,6 +161,7 @@ lua require('killersheep').setup()
 lua require('code_runner').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
+lua require('fzf-lua').files()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
@@ -191,11 +193,6 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-" Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
