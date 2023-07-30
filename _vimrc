@@ -72,6 +72,7 @@ call plug#begin()
   Plug 'pbrisbin/vim-mkdir'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
