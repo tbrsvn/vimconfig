@@ -161,7 +161,6 @@ lua require('killersheep').setup()
 lua require('code_runner').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
-lua require('fzf-lua').files()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
@@ -193,6 +192,8 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+" Fuzzy Finder
+nnoremap <leader>ff <cmd>lua require('fzf-lua').files()<cr>
 " Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
