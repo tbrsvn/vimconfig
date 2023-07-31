@@ -106,7 +106,7 @@ call plug#begin()
   Plug 'catppuccin/nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug "ibhagwan/fzf-lua", {"branch": "main"}
+  Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
