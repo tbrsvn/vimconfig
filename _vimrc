@@ -97,6 +97,7 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
+autocmd VimEnter * packadd termdebug
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
