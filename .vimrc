@@ -59,7 +59,10 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
+" Make Undo File
 set undofile
+" Have GDB Alias
+autocmd VimEnter * packadd termdebug
 " Plugins
 call plug#begin()
   Plug 'luochen1990/rainbow'
@@ -97,7 +100,6 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
-autocmd VimEnter * packadd termdebug
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
