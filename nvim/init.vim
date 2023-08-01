@@ -26,6 +26,7 @@ set cursorline
 set updatetime=250
 " Enable Mouse
 set mouse=a
+set mousehide
 " Show The File Currently Being Edited
 set title
 " Confirm You Want To Close Unsaved File
