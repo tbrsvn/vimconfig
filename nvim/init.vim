@@ -60,6 +60,8 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
+" Setup GDB Alias
+autocmd VimEnter * packadd termdebug
 " Backup History
 if has("win64") || has("win32") || has("win16")
   if !isdirectory("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir")
@@ -155,7 +157,6 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 autocmd VimEnter * NERDTree | wincmd p
-autocmd VimEnter * packadd termdebug
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
