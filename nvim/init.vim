@@ -76,6 +76,16 @@ else
   endif
 endif
 set undofile
+" Autosave
+function! AutoSave()
+    let was_modified=&modified
+    silent! wa
+    if was_modified && !&modified
+        "echom " ↓ (" . strftime("%H:%M:%S") . ")"
+        echom "Autosaved at " . strftime("%H:%M:%S") . "."
+    endif
+endfunction
+autocmd CursorHold * call AutoSave()
 " Plugins
 call plug#begin()
   Plug 'numToStr/Comment.nvim'
@@ -90,6 +100,7 @@ call plug#begin()
   Plug 'chrisgrieser/nvim-genghis'
   Plug 'mistweaverco/Screenshot.nvim'
   Plug 'gbprod/stay-in-place.nvim'
+  Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'tpope/vim-surround'
   Plug 'Norok-The-Diablo/minesweeper.nvim'
   Plug 'tpope/vim-commentary'
@@ -167,12 +178,14 @@ lua require('gitsigns').setup()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
+" Clipboard
 lua << EOF
 require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
 EOF
-" Configure Plugin Shortcuts
+
+" Configure Plugin Keybinds
 " Knap
 " F5 processes the document once, and refreshes the view
 inoremap <silent> <F5> <C-o>:lua require("knap").process_once()<CR>
