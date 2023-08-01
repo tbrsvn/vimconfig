@@ -64,14 +64,14 @@ autocmd BufWritePre * %s/\s\+$//e
 " Setup GDB Alias
 autocmd VimEnter * packadd termdebug
 " Backup History
-if has("win64") || has("win32") || has("win16")
-  if !isdirectory("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir")
-    silent! call mkdir("C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir", "", 0700)
+if has('win64') || has('win32') || has('win16')
+  if !isdirectory('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir')
+    silent! call mkdir('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir', '', 0700)
     set undodir=C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir
   endif
 else
-  if !isdirectory("/tmp/.nvim-undo-dir")
-    silent! call mkdir("/tmp/.nvim-undo-dir", "", 0700)
+  if !isdirectory('/tmp/.nvim-undo-dir')
+    silent! call mkdir('/tmp/.nvim-undo-dir', '', 0700)
     set undodir=/tmp/.nvim-undo-dir
   endif
 endif
@@ -81,8 +81,8 @@ function! AutoSave()
     let was_modified=&modified
     silent! wa
     if was_modified && !&modified
-        "echom " ↓ (" . strftime("%H:%M:%S") . ")"
-        echom "Autosaved at " . strftime("%H:%M:%S") . "."
+        'echom ' ↓ (' . strftime('%H:%M:%S') . ')'
+        echom 'Autosaved at ' . strftime('%H:%M:%S') . '.'
     endif
 endfunction
 autocmd CursorHold * call AutoSave()
@@ -148,7 +148,7 @@ set background=dark
 lua << EOF
 require('lualine').setup {
     options = {
-        theme = "catppuccin",
+        theme = 'catppuccin',
         icons_enabled = true
     },
     sections = {
@@ -166,8 +166,8 @@ let g:rainbow_conf = {
   \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4']
 \ }
 let NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
+let g:NERDTreeDirArrowExpandable='+'
+let g:NERDTreeDirArrowCollapsible='~'
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 lua require('neoscroll').setup()
@@ -188,21 +188,21 @@ EOF
 " Configure Plugin Keybinds
 " Knap
 " F5 processes the document once, and refreshes the view
-inoremap <silent> <F5> <C-o>:lua require("knap").process_once()<CR>
-vnoremap <silent> <F5> <C-c>:lua require("knap").process_once()<CR>
-nnoremap <silent> <F5> :lua require("knap").process_once()<CR>
-" F6 closes the viewer application, and allows settings to be reset
-inoremap <silent> <F6> <C-o>:lua require("knap").close_viewer()<CR>
-vnoremap <silent> <F6> <C-c>:lua require("knap").close_viewer()<CR>
-nnoremap <silent> <F6> :lua require("knap").close_viewer()<CR>
-" F7 toggles the auto-processing on and off
-inoremap <silent> <F7> <C-o>:lua require("knap").toggle_autopreviewing()<CR>
-vnoremap <silent> <F7> <C-c>:lua require("knap").toggle_autopreviewing()<CR>
-nnoremap <silent> <F7> :lua require("knap").toggle_autopreviewing()<CR>
-" F8 invokes a SyncTeX forward search, or similar, where appropriate
-inoremap <silent> <F8> <C-o>:lua require("knap").forward_jump()<CR>
-vnoremap <silent> <F8> <C-c>:lua require("knap").forward_jump()<CR>
-nnoremap <silent> <F8> :lua require("knap").forward_jump()<CR>
+inoremap <silent> <F5> <C-o>:lua require('knap').process_once()<CR>
+vnoremap <silent> <F5> <C-c>:lua require('knap').process_once()<CR>
+nnoremap <silent> <F5> :lua require('knap').process_once()<CR>
+' F6 closes the viewer application, and allows settings to be reset
+inoremap <silent> <F6> <C-o>:lua require('knap').close_viewer()<CR>
+vnoremap <silent> <F6> <C-c>:lua require('knap').close_viewer()<CR>
+nnoremap <silent> <F6> :lua require('knap').close_viewer()<CR>
+' F7 toggles the auto-processing on and off
+inoremap <silent> <F7> <C-o>:lua require('knap').toggle_autopreviewing()<CR>
+vnoremap <silent> <F7> <C-c>:lua require('knap').toggle_autopreviewing()<CR>
+nnoremap <silent> <F7> :lua require('knap').toggle_autopreviewing()<CR>
+' F8 invokes a SyncTeX forward search, or similar, where appropriate
+inoremap <silent> <F8> <C-o>:lua require('knap').forward_jump()<CR>
+vnoremap <silent> <F8> <C-c>:lua require('knap').forward_jump()<CR>
+nnoremap <silent> <F8> :lua require('knap').forward_jump()<CR>
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -217,13 +217,13 @@ function! s:check_back_space() abort
 endfunction
 inoremap <silent><expr> <Tab>
   \ coc#pum#visible() ? coc#pum#next(1) :
-  \ check_back_space() ? "\<Tab>" :
+  \ check_back_space() ? '\<Tab>' :
   \ coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-if has("patch-8.1.1564")
+if has('patch-8.1.1564')
   set signcolumn=number
 else
   set signcolumn=no
