@@ -231,4 +231,4 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-snip
 
 " --- Notes About Installing Plugins ---
 " :PlugInstall :PlugClean :UpdateRemotePlugins
-" :CocInstall coc-json coc-tsserver coc-html coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-texlab coc-xml coc-yaml
+" :CocInstall coc-json coc-tsserver coc-html coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-r-lsp coc-texlab coc-xml coc-yaml
