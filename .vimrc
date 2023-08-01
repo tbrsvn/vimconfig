@@ -47,6 +47,7 @@ set autoindent
 set nocompatible
 " Turn On Syntax
 syntax on
+let g:is_posix=1
 " Enable Autocompletion
 set wildmode=longest,list,full
 " Make It So When You Split It Goes To The Right
