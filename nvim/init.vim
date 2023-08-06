@@ -33,6 +33,8 @@ set title
 set confirm
 " Enable Spellchecking
 set spell
+" Fix Coc
+set completeopt+='noselect'
 " Set History Higher
 set history=10000
 " Hide Tilde's
