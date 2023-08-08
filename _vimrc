@@ -69,6 +69,7 @@ autocmd VimEnter * packadd termdebug
 call plug#begin()
   Plug 'luochen1990/rainbow'
   Plug 'tpope/vim-fugitive'
+  Plug '907th/vim-auto-save'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
   Plug 'tpope/vim-commentary'
@@ -82,9 +83,16 @@ call plug#begin()
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 " Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if has('win64') || has('win32') || has('win16')
+  if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
+    silent !curl -fLo :\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+else
+  if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
 endif
 " Run PlugInstall and PlugClean if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -99,11 +107,12 @@ let g:rainbow_conf = {
 \ }
 let g:airline_theme = 'catppuccin_mocha'
 let NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
+let g:NERDTreeDirArrowExpandable='+'
+let g:NERDTreeDirArrowCollapsible='~'
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:rainbow_active = 1
+silent! let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
 " Configure Plugin Shortcuts
 " Nerdtree
@@ -117,13 +126,13 @@ function! s:check_back_space() abort
 endfunction
 inoremap <silent><expr> <Tab>
   \ coc#pum#visible() ? coc#pum#next(1) :
-  \ check_back_space() ? "\<Tab>" :
+  \ check_back_space() ? '\<Tab>' :
   \ coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-if has("patch-8.1.1564")
+if has('patch-8.1.1564')
   set signcolumn=number
 else
   set signcolumn=no
