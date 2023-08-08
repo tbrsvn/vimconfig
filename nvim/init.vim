@@ -62,6 +62,8 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
+" Autosave
+autocmd TextChanged, TextChangedI * silent! write
 " Setup GDB Alias
 autocmd VimEnter * packadd termdebug
 " Backup History
@@ -89,7 +91,6 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'tamton-aquib/duck.nvim'
   Plug 'chrisgrieser/nvim-genghis'
-  Plug '907th/vim-auto-save'
   Plug 'mistweaverco/Screenshot.nvim'
   Plug 'gbprod/stay-in-place.nvim'
   Plug 'tpope/vim-surround'
@@ -169,7 +170,6 @@ lua require('gitsigns').setup()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
-silent! let g:auto_save = 1
 " Clipboard
 lua << EOF
 require('deferred-clipboard').setup {
