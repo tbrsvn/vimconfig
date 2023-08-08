@@ -79,16 +79,6 @@ else
   endif
 endif
 set undofile
-" Autosave
-function! AutoSave()
-    let was_modified=&modified
-    silent! wa
-    if was_modified && !&modified
-        'echom ' ↓ (' . strftime('%H:%M:%S') . ')'
-        echom 'Autosaved at ' . strftime('%H:%M:%S') . '.'
-    endif
-endfunction
-autocmd CursorHold * call AutoSave()
 " Plugins
 call plug#begin()
   Plug 'numToStr/Comment.nvim'
@@ -101,6 +91,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'tamton-aquib/duck.nvim'
   Plug 'chrisgrieser/nvim-genghis'
+  Plug '907th/vim-auto-save'
   Plug 'mistweaverco/Screenshot.nvim'
   Plug 'gbprod/stay-in-place.nvim'
   Plug 'tpope/vim-surround'
@@ -179,6 +170,7 @@ lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
+let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
 " Clipboard
 lua << EOF
