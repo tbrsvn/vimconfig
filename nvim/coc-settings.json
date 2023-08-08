@@ -4,5 +4,6 @@
   "coc.preferences.snippets.enable": true,
   "coc.preferences.extensionUpdateCheck": "never",
   "suggest.disableMenu": true,
+  "suggest.noselect": true,
   "suggest.snippetIndicator": ""
 }
