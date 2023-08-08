@@ -62,10 +62,18 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
-" Autosave
-autocmd TextChanged, TextChangedI * silent! write
 " Setup GDB Alias
 autocmd VimEnter * packadd termdebug
+" Autosave
+function! AutoSave()
+    let was_modified=&modified
+    silent! wa
+    if was_modified && !&modified
+        'echom ' ↓ (' . strftime('%H:%M:%S') . ')'
+        echom 'Autosaved at ' . strftime('%H:%M:%S') . '.'
+    endif
+endfunction
+autocmd CursorHold * silent! call AutoSave()
 " Backup History
 if has('win64') || has('win32') || has('win16')
   if !isdirectory('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir')
