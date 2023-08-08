@@ -168,8 +168,8 @@ lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
-let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
+silent! let g:auto_save = 1
 " Clipboard
 lua << EOF
 require('deferred-clipboard').setup {
