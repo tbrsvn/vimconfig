@@ -149,6 +149,9 @@ require('lualine').setup {
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'location'},
         lualine_z = {'ctime'}
+  },
+  extensions = {
+  'nerdtree'
   }
 }
 EOF
