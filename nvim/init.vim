@@ -34,7 +34,7 @@ set confirm
 " Enable Spellchecking
 set spell
 " Fix Coc
-set completeopt+='noselect'
+set completeopt+='noinsert'
 " Set History Higher
 set history=10000
 " Hide Tilde's
