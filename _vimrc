@@ -115,6 +115,10 @@ let g:rainbow_active = 1
 silent! let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
 " Configure Plugin Shortcuts
+" Markdown Previewer
+  nmap <F5> <Plug>MarkdownPreview
+  nmap <F6> <Plug>MarkdownPreviewStop
+  nmap <F7> <Plug>MarkdownPreviewToggle
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
