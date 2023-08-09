@@ -79,6 +79,7 @@ endif
 set undofile
 " Plugins
 call plug#begin()
+" Plug 'github/copilot.vim'
   Plug 'numToStr/Comment.nvim'
   Plug 'EtiamNullam/deferred-clipboard.nvim'
   Plug 'CRAG666/code_runner.nvim'
@@ -102,7 +103,6 @@ call plug#begin()
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'seandewar/nvimesweeper'
   Plug 'frabjous/knap'
-" Plug 'github/copilot.vim'
   Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
@@ -112,6 +112,7 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
@@ -181,22 +182,28 @@ require('deferred-clipboard').setup {
 EOF
 " Configure Plugin Keybinds
 " Knap
-" F5 processes the document once, and refreshes the view
-inoremap <silent> <F5> <C-o>:lua require('knap').process_once()<CR>
-vnoremap <silent> <F5> <C-c>:lua require('knap').process_once()<CR>
-nnoremap <silent> <F5> :lua require('knap').process_once()<CR>
-" F6 closes the viewer application, and allows settings to be reset
-inoremap <silent> <F6> <C-o>:lua require('knap').close_viewer()<CR>
-vnoremap <silent> <F6> <C-c>:lua require('knap').close_viewer()<CR>
-nnoremap <silent> <F6> :lua require('knap').close_viewer()<CR>
-" F7 toggles the auto-processing on and off
-inoremap <silent> <F7> <C-o>:lua require('knap').toggle_autopreviewing()<CR>
-vnoremap <silent> <F7> <C-c>:lua require('knap').toggle_autopreviewing()<CR>
-nnoremap <silent> <F7> :lua require('knap').toggle_autopreviewing()<CR>
-" F8 invokes a SyncTeX forward search, or similar, where appropriate
-inoremap <silent> <F8> <C-o>:lua require('knap').forward_jump()<CR>
-vnoremap <silent> <F8> <C-c>:lua require('knap').forward_jump()<CR>
-nnoremap <silent> <F8> :lua require('knap').forward_jump()<CR>
+if has('win64') || has('win32') || has('win16')
+  nmap <F5> <Plug>MarkdownPreview
+  nmap <F6> <Plug>MarkdownPreviewStop
+  nmap <F7> <Plug>MarkdownPreviewToggle
+else
+  " F5 processes the document once, and refreshes the view
+  inoremap <silent> <F5> <C-o>:lua require('knap').process_once()<CR>
+  vnoremap <silent> <F5> <C-c>:lua require('knap').process_once()<CR>
+  nnoremap <silent> <F5> :lua require('knap').process_once()<CR>
+  " F6 closes the viewer application, and allows settings to be reset
+  inoremap <silent> <F6> <C-o>:lua require('knap').close_viewer()<CR>
+  vnoremap <silent> <F6> <C-c>:lua require('knap').close_viewer()<CR>
+  nnoremap <silent> <F6> :lua require('knap').close_viewer()<CR>
+  " F7 toggles the auto-processing on and off
+  inoremap <silent> <F7> <C-o>:lua require('knap').toggle_autopreviewing()<CR>
+  vnoremap <silent> <F7> <C-c>:lua require('knap').toggle_autopreviewing()<CR>
+  nnoremap <silent> <F7> :lua require('knap').toggle_autopreviewing()<CR>
+  " F8 invokes a SyncTeX forward search, or similar, where appropriate
+  inoremap <silent> <F8> <C-o>:lua require('knap').forward_jump()<CR>
+  vnoremap <silent> <F8> <C-c>:lua require('knap').forward_jump()<CR>
+  nnoremap <silent> <F8> :lua require('knap').forward_jump()<CR>
+endif
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
