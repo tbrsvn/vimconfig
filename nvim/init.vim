@@ -181,7 +181,7 @@ require('deferred-clipboard').setup {
 }
 EOF
 " Configure Plugin Keybinds
-" Knap
+" Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
   nmap <F6> <Plug>MarkdownPreviewStop
