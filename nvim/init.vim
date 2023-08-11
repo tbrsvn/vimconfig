@@ -65,12 +65,7 @@ autocmd BufWritePre * %s/\s\+$//e
 " Setup GDB Alias
 autocmd VimEnter * packadd termdebug
 " Backup History
-if has('win64') || has('win32') || has('win16')
-  if !isdirectory('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir')
-    silent! call mkdir('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir', '', 0700)
-    set undodir=C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir
-  endif
-else
+if has('unix')
   if !isdirectory('/tmp/.nvim-undo-dir')
     silent! call mkdir('/tmp/.nvim-undo-dir', '', 0700)
     set undodir=/tmp/.nvim-undo-dir
@@ -167,9 +162,9 @@ autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
-lua require('code_runner').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
+lua require('code_runner').setup(filetype = {python = "python3"})
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
