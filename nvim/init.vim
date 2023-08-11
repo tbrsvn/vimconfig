@@ -176,6 +176,9 @@ require('deferred-clipboard').setup {
 }
 EOF
 " Configure Plugin Keybinds
+" Code Runner
+nnoremap Rc :RunCode
+nnoremap RC :RunCode
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
@@ -224,8 +227,8 @@ if has('patch-8.1.1564')
 else
   set signcolumn=no
 endif
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-html', 'coc-snippets', 'coc-css', 'coc-cssmodules', 'coc-r-lsp', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
+let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-snippets', 'coc-css', 'coc-cssmodules', 'coc-r-lsp', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
 
 " --- Notes About Installing Plugins ---
 " :PlugInstall :PlugClean :UpdateRemotePlugins
-" :CocInstall coc-json coc-tsserver coc-html coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-r-lsp coc-texlab coc-xml coc-yaml
+" :CocInstall coc-pairs coc-json coc-tsserver coc-html coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-r-lsp coc-texlab coc-xml coc-yaml
