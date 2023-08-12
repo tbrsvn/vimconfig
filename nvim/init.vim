@@ -175,8 +175,8 @@ require('deferred-clipboard').setup {
 }
 EOF
 " Code Runner
-if has('win64') || has('win32') || has('win16')
-  lua << EOF
+lua << EOF
+if has('win64') or has('win32') or has('win16') then
   require('code_runner').setup {
     filetype = {
       python = 'python3',
@@ -184,28 +184,26 @@ if has('win64') || has('win32') || has('win16')
       javascript = 'node',
       java = {
         'cd $dir &&',
-        'javac $fileName'
+        'javac $fileName',
       },
       typescript = {
         'cd $dir &&',
         'tsc $fileName &&',
-        'node $fileNameWithoutExt.js'
+        'node $fileNameWithoutExt.js',
       },
       rust = {
         'cd $dir &&',
         'rustc $fileName &&',
-        '$dir/$fileNameWithoutExt.exe'
+        '$dir/$fileNameWithoutExt.exe',
       },
       cpp = {
         'cd $dir &&',
         'g++ $fileName &&',
-        '$dir/$fileNameWithoutExt.exe'
+        '$dir/$fileNameWithoutExt.exe',
       },
     },
   }
-  EOF
 else
-  lua << EOF
   require('code_runner').setup {
     filetype = {
       python = 'python3',
@@ -214,27 +212,27 @@ else
       java = {
         'cd $dir &&',
         'javac $fileName &&',
-        'java $fileNameWithoutExt'
+        'java $fileNameWithoutExt',
       },
       typescript = {
         'cd $dir &&',
         'tsc $fileName &&',
-        'node $fileNameWithoutExt.js'
+        'node $fileNameWithoutExt.js',
       },
       rust = {
         'cd $dir &&',
         'rustc $fileName &&',
-        '$dir/$fileNameWithoutExt'
+        '$dir/$fileNameWithoutExt',
       },
       cpp = {
         'cd $dir &&',
         'g++ $fileName &&',
-        '$dir/$fileNameWithoutExt'
+        '$dir/$fileNameWithoutExt',
       },
     },
   }
-  EOF
-endif
+end
+EOF
 " Configure Plugin Keybinds
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
