@@ -187,11 +187,11 @@ if has('win64') || has('win32') || has('win16')
         java = {
           'cd $dir &&',
           'javac $fileName &&',
-          'java $fileNameWithoutExt'
+          'java $fileNameWithoutExt.exe'
         },
         typescript = {
-          'cd $dir &&'
-          'tsc $fileName &&'
+          'cd $dir &&',
+          'tsc $fileName &&',
           'node $fileNameWithoutExt.js'
         },
         rust = {
@@ -200,9 +200,9 @@ if has('win64') || has('win32') || has('win16')
           '$dir/$fileNameWithoutExt.exe'
         },
         c++ = {
-          'cd $dir &&'
-          'g++ $fileName &&'
-          '$dir/$fileNameWithoutExt'
+          'cd $dir &&',
+          'g++ $fileName &&',
+          '$dir/$fileNameWithoutExt.exe'
         },
       },
     },
@@ -222,8 +222,8 @@ else
           'java $fileNameWithoutExt'
         },
         typescript = {
-          'cd $dir &&'
-          'tsc $fileName &&'
+          'cd $dir &&',
+          'tsc $fileName &&',
           'node $fileNameWithoutExt.js'
         },
         rust = {
@@ -232,8 +232,8 @@ else
           '$dir/$fileNameWithoutExt'
         },
         c++ = {
-          'cd $dir &&'
-          'g++ $fileName &&'
+          'cd $dir &&',
+          'g++ $fileName &&',
           '$dir/$fileNameWithoutExt'
         },
       },
