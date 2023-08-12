@@ -204,7 +204,7 @@ if has('win64') || has('win32') || has('win16')
     },
   }
   )
-  EOF
+EOF
 else
   lua << EOF
   require('code_runner').setup( {
@@ -235,7 +235,7 @@ else
     },
   }
   )
-  EOF
+EOF
 endif
 " Configure Plugin Keybinds
 " Knap And Markdown Preview
