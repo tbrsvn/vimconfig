@@ -181,7 +181,7 @@ if has('win64') || has('win32') || has('win16')
     filetype = {
       python = 'python3',
       go = 'go run',
-      javascript 'node',
+      javascript = 'node',
       java = {
         'cd $dir &&',
         'javac $fileName'
@@ -210,7 +210,7 @@ else
     filetype = {
       python = 'python3',
       go = 'go run',
-      javascript 'node',
+      javascript = 'node',
       java = {
         'cd $dir &&',
         'javac $fileName &&',
