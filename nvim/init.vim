@@ -181,9 +181,30 @@ require('code_runner').setup(
   {
     filetype = {
       python = 'python3',
-      gol
+      go = 'go run',
+      javascript 'node',
+      java = {
+        'cd $dir &&',
+        'javac $fileName &&',
+        'java $fileNameWithoutExt'
+      },
+      typescript = {
+        'cd $dir &&'
+        'tsc $fileName &&'
+        'node $fileNameWithoutExt.js'
+      },
+      rust = {
+        'cd $dir &&',
+        'rustc $fileName &&',
+        '$dir/$fileNameWithoutExt'
+      },
+      c++ = {
+        'cd $dir &&'
+        'g++ $fileName &&'
+        '$dir/$fileNameWithoutExt'
+      },
     },
-  }
+  },
 )
 EOF
 nnoremap Rc :RunCode
