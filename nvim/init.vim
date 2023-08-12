@@ -176,37 +176,71 @@ require('deferred-clipboard').setup {
 EOF
 " Configure Plugin Keybinds
 " Code Runner
-lua << EOF
-require('code_runner').setup(
-  {
-    filetype = {
-      python = 'python3',
-      go = 'go run',
-      javascript 'node',
-      java = {
-        'cd $dir &&',
-        'javac $fileName &&',
-        'java $fileNameWithoutExt'
-      },
-      typescript = {
-        'cd $dir &&'
-        'tsc $fileName &&'
-        'node $fileNameWithoutExt.js'
-      },
-      rust = {
-        'cd $dir &&',
-        'rustc $fileName &&',
-        '$dir/$fileNameWithoutExt'
-      },
-      c++ = {
-        'cd $dir &&'
-        'g++ $fileName &&'
-        '$dir/$fileNameWithoutExt'
+if has('win64') || has('win32') || has('win16')
+  lua << EOF
+  require('code_runner').setup(
+    {
+      filetype = {
+        python = 'python3',
+        go = 'go run',
+        javascript 'node',
+        java = {
+          'cd $dir &&',
+          'javac $fileName &&',
+          'java $fileNameWithoutExt'
+        },
+        typescript = {
+          'cd $dir &&'
+          'tsc $fileName &&'
+          'node $fileNameWithoutExt.js'
+        },
+        rust = {
+          'cd $dir &&',
+          'rustc $fileName &&',
+          '$dir/$fileNameWithoutExt.exe'
+        },
+        c++ = {
+          'cd $dir &&'
+          'g++ $fileName &&'
+          '$dir/$fileNameWithoutExt'
+        },
       },
     },
-  },
-)
-EOF
+  )
+  EOF
+else
+  lua << EOF
+  require('code_runner').setup(
+    {
+      filetype = {
+        python = 'python3',
+        go = 'go run',
+        javascript 'node',
+        java = {
+          'cd $dir &&',
+          'javac $fileName &&',
+          'java $fileNameWithoutExt'
+        },
+        typescript = {
+          'cd $dir &&'
+          'tsc $fileName &&'
+          'node $fileNameWithoutExt.js'
+        },
+        rust = {
+          'cd $dir &&',
+          'rustc $fileName &&',
+          '$dir/$fileNameWithoutExt'
+        },
+        c++ = {
+          'cd $dir &&'
+          'g++ $fileName &&'
+          '$dir/$fileNameWithoutExt'
+        },
+      },
+    },
+  )
+  EOF
+endif
 nnoremap Rc :RunCode
 nnoremap RC :RunCode
 " Knap And Markdown Preview
