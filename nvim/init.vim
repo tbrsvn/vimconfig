@@ -176,7 +176,7 @@ require('deferred-clipboard').setup {
 EOF
 " Code Runner
 lua << EOF
-if has('win64') or has('win32') or has('win16') then
+if vim.fn.has('win64') or vim.fn.has('win32') or vim.fn.has('win16') then
   require('code_runner').setup {
     filetype = {
       python = 'python3',
