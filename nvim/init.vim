@@ -186,8 +186,7 @@ if has('win64') || has('win32') || has('win16')
         javascript 'node',
         java = {
           'cd $dir &&',
-          'javac $fileName &&',
-          'java $fileNameWithoutExt.exe'
+          'javac $fileName'
         },
         typescript = {
           'cd $dir &&',
