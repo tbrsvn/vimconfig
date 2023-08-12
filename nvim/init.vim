@@ -180,6 +180,10 @@ if has('win64') || has('win32') || has('win16')
   require('code_runner').setup( {
     filetype = {
       python = 'python3',
+      perl = 'perl',
+      lua = 'lua',
+      ruby = 'ruby',
+      php = 'php',
       go = 'go run',
       javascript = 'node',
       java = {
@@ -211,6 +215,10 @@ else
     filetype = {
       python = 'python3',
       go = 'go run',
+      perl = 'perl',
+      lua = 'lua',
+      ruby = 'ruby',
+      php = 'php',
       javascript = 'node',
       java = {
         'cd $dir &&',
