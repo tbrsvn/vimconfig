@@ -197,7 +197,7 @@ if has('win64') || has('win32') || has('win16')
           'rustc $fileName &&',
           '$dir/$fileNameWithoutExt.exe'
         },
-        c++ = {
+        cpp = {
           'cd $dir &&',
           'g++ $fileName &&',
           '$dir/$fileNameWithoutExt.exe'
@@ -229,7 +229,7 @@ else
           'rustc $fileName &&',
           '$dir/$fileNameWithoutExt'
         },
-        c++ = {
+        cpp = {
           'cd $dir &&',
           'g++ $fileName &&',
           '$dir/$fileNameWithoutExt'
