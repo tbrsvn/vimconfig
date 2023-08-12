@@ -177,7 +177,7 @@ EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
-  require('code_runner').setup{
+  require('code_runner').setup {
     filetype = {
       python = 'python3',
       go = 'go run',
@@ -206,7 +206,7 @@ if has('win64') || has('win32') || has('win16')
   EOF
 else
   lua << EOF
-  require('code_runner').setup{
+  require('code_runner').setup {
     filetype = {
       python = 'python3',
       go = 'go run',
