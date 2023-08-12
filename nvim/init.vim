@@ -174,7 +174,6 @@ require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
 EOF
-" Configure Plugin Keybinds
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
@@ -240,8 +239,7 @@ else
   )
   EOF
 endif
-nnoremap Rc :RunCode
-nnoremap RC :RunCode
+" Configure Plugin Keybinds
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
