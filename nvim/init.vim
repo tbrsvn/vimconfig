@@ -177,66 +177,62 @@ EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
-  require('code_runner').setup(
-    {
-      filetype = {
-        python = 'python3',
-        go = 'go run',
-        javascript 'node',
-        java = {
-          'cd $dir &&',
-          'javac $fileName'
-        },
-        typescript = {
-          'cd $dir &&',
-          'tsc $fileName &&',
-          'node $fileNameWithoutExt.js'
-        },
-        rust = {
-          'cd $dir &&',
-          'rustc $fileName &&',
-          '$dir/$fileNameWithoutExt.exe'
-        },
-        cpp = {
-          'cd $dir &&',
-          'g++ $fileName &&',
-          '$dir/$fileNameWithoutExt.exe'
-        },
+  require('code_runner').setup{
+    filetype = {
+      python = 'python3',
+      go = 'go run',
+      javascript 'node',
+      java = {
+        'cd $dir &&',
+        'javac $fileName'
+      },
+      typescript = {
+        'cd $dir &&',
+        'tsc $fileName &&',
+        'node $fileNameWithoutExt.js'
+      },
+      rust = {
+        'cd $dir &&',
+        'rustc $fileName &&',
+        '$dir/$fileNameWithoutExt.exe'
+      },
+      cpp = {
+        'cd $dir &&',
+        'g++ $fileName &&',
+        '$dir/$fileNameWithoutExt.exe'
       },
     },
-  )
+  }
   EOF
 else
   lua << EOF
-  require('code_runner').setup(
-    {
-      filetype = {
-        python = 'python3',
-        go = 'go run',
-        javascript 'node',
-        java = {
-          'cd $dir &&',
-          'javac $fileName &&',
-          'java $fileNameWithoutExt'
-        },
-        typescript = {
-          'cd $dir &&',
-          'tsc $fileName &&',
-          'node $fileNameWithoutExt.js'
-        },
-        rust = {
-          'cd $dir &&',
-          'rustc $fileName &&',
-          '$dir/$fileNameWithoutExt'
-        },
-        cpp = {
-          'cd $dir &&',
-          'g++ $fileName &&',
-          '$dir/$fileNameWithoutExt'
-        },
+  require('code_runner').setup{
+    filetype = {
+      python = 'python3',
+      go = 'go run',
+      javascript 'node',
+      java = {
+        'cd $dir &&',
+        'javac $fileName &&',
+        'java $fileNameWithoutExt'
+      },
+      typescript = {
+        'cd $dir &&',
+        'tsc $fileName &&',
+        'node $fileNameWithoutExt.js'
+      },
+      rust = {
+        'cd $dir &&',
+        'rustc $fileName &&',
+        '$dir/$fileNameWithoutExt'
+      },
+      cpp = {
+        'cd $dir &&',
+        'g++ $fileName &&',
+        '$dir/$fileNameWithoutExt'
       },
     },
-  )
+  }
   EOF
 endif
 " Configure Plugin Keybinds
