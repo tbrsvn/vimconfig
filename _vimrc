@@ -75,6 +75,7 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tc50cal/vim-terminal'
   Plug 'lervag/vimtex'
+  Plug 'Norok-The-Diablo/vim-code-runner'
   Plug 'pbrisbin/vim-mkdir'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -115,6 +116,16 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 let g:rainbow_active = 1
 silent! let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
+" Code Runner
+let g:CodeRunnerCommandMap = {
+  \ 'python' : 'python3 $fileName'
+  \ 'go' : 'go run $fileName'
+  \ 'perl' : 'perl $fileName'
+  \ 'lua' : 'lua $fileName'
+  \ 'ruby' : 'ruby $fileName'
+  \ 'php' : 'php $fileName'
+  \ 'javascript' : 'node $fileName'
+  \ }
 " Configure Plugin Shortcuts
 " Markdown Previewer
 nmap <F5> <Plug>MarkdownPreview
