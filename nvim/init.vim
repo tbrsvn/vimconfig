@@ -107,6 +107,7 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
