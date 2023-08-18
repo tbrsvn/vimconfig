@@ -115,12 +115,12 @@ call plug#end()
 " Install vim-plug if not found
 if has('win64') || has('win32') || has('win16')
   if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
-    silent! !curl -fLo :\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim --create-dirs
+    silent !curl -fLo C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 else
   if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    silent! !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 endif
