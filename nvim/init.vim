@@ -5,6 +5,7 @@ set number relativenumber
 set wrap
 " Set Text Encoding
 set encoding=utf-8
+let $LANG='en_US.UTF-8'
 " Status Bar
 set laststatus=2
 " No Startup Text
