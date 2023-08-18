@@ -113,6 +113,7 @@ let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let $LANG='en_US.UTF-8'
 let g:rainbow_active = 1
 silent! let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
