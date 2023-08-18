@@ -65,7 +65,12 @@ autocmd BufWritePre * %s/\s\+$//e
 " Setup GDB Alias
 autocmd VimEnter * packadd termdebug
 " Backup History
-if has('unix')
+if has('')
+  if !isdirectory('/tmp/.nvim-undo-dir')
+    silent! call mkdir('/tmp/.nvim-undo-dir', '', 0700)
+    set undodir=/tmp/.nvim-undo-dir
+  endif
+else
   if !isdirectory('/tmp/.nvim-undo-dir')
     silent! call mkdir('/tmp/.nvim-undo-dir', '', 0700)
     set undodir=/tmp/.nvim-undo-dir
@@ -115,7 +120,7 @@ call plug#end()
 " Install vim-plug if not found
 if has('win64') || has('win32') || has('win16')
   if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
-    silent !curl -fLo C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim --create-dirs
+    silent !curl -fLo $HOME\AppData\Local\nvim\autoload\plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 else
