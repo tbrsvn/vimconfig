@@ -181,6 +181,13 @@ require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
 EOF
+" Fireneovim
+if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
+  set laststatus=0
+  if exists("g:NERDTree") && exists("t:NERDTreeBufName") && bufloaded(t:NERDTreeBufName)
+    silent! NERDTreeClose
+  endif
+endif
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
