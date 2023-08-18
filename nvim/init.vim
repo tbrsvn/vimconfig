@@ -165,8 +165,6 @@ let $LANG='en_US.UTF-8'
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
-autocmd VimEnter * NERDTree | wincmd p
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
@@ -184,7 +182,9 @@ EOF
 " Fireneovim
 if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
   set laststatus=0
-  silent! NERDTreeClose
+else
+  autocmd VimEnter * NERDTree | wincmd p
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 endif
 " Code Runner
 if has('win64') || has('win32') || has('win16')
