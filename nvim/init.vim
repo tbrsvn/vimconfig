@@ -68,7 +68,7 @@ autocmd VimEnter * packadd termdebug
 if has('win64') || has('win32') || has('win16')
   if !isdirectory('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir')
     silent! call mkdir('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir', '', 0700)
-    set undodir=$HOMEAppData\Local\Temp\.nvim-undo-dir
+    set undodir=$HOME\AppData\Local\Temp\.nvim-undo-dir
   endif
 else
   if !isdirectory('/tmp/.nvim-undo-dir')
@@ -120,7 +120,7 @@ call plug#end()
 " Install vim-plug if not found
 if has('win64') || has('win32') || has('win16')
   if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
-    silent !curl -fLo $HOME\AppData\Local\nvim\autoload\plug.vim --create-dirs
+    silent !curl -fLo autoload\plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 else
