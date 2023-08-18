@@ -65,10 +65,10 @@ autocmd BufWritePre * %s/\s\+$//e
 " Setup GDB Alias
 autocmd VimEnter * packadd termdebug
 " Backup History
-if has('')
-  if !isdirectory('/tmp/.nvim-undo-dir')
-    silent! call mkdir('/tmp/.nvim-undo-dir', '', 0700)
-    set undodir=/tmp/.nvim-undo-dir
+if has('win64') || has('win32') || has('win16')
+  if !isdirectory('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir')
+    silent! call mkdir('C:\Users\%USERNAME%\AppData\Local\Temp\.nvim-undo-dir', '', 0700)
+    set undodir=$HOMEAppData\Local\Temp\.nvim-undo-dir
   endif
 else
   if !isdirectory('/tmp/.nvim-undo-dir')
