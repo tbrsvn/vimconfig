@@ -120,7 +120,7 @@ silent! let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
 " Code Runner
 let g:CodeRunnerCommandMap = {
-  \ 'python' : 'python3 $fileName'
+  \ 'python' : 'python3 $fileName',
   \ 'go' : 'go run $fileName',
   \ 'perl' : 'perl $fileName',
   \ 'lua' : 'lua $fileName',
