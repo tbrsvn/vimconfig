@@ -75,7 +75,7 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tc50cal/vim-terminal'
   Plug 'lervag/vimtex'
-  Plug 'Norok-The-Diablo/vim-code-runner'
+  Plug 'xianzhon/vim-code-runner'
   Plug 'pbrisbin/vim-mkdir'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
