@@ -109,6 +109,7 @@ call plug#begin()
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'catppuccin/nvim'
+  Plug 'goolord/alpha-nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
