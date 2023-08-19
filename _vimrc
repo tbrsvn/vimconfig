@@ -85,12 +85,7 @@ call plug#begin()
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 " Install vim-plug if not found
-if has('win64') || has('win32') || has('win16')
-  if empty(glob('$HOME\vimfiles\autoload\plug.vim'))
-    silent !curl -fLo $HOME\vimfiles\autoload\plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
-else
+if has('unix')
   if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
