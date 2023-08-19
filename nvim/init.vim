@@ -105,6 +105,7 @@ call plug#begin()
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'archibate/lualine-time'
+  Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'catppuccin/nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
