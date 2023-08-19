@@ -61,7 +61,18 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
-" Make Undo File
+" Backup History
+if has('win64') || has('win32') || has('win16')
+  if !isdirectory('$LOCALAPPDATA\Temp\.vim-undo-dir')
+    silent! call mkdir('$LOCALAPPDATA\Temp\.vim-undo-dir', '', 0700)
+    set undodir=$LOCALAPPDATA\Temp\.vim-undo-dir
+  endif
+else
+  if !isdirectory('/tmp/.vim-undo-dir')
+    silent! call mkdir('/tmp/.vim-undo-dir', '', 0700)
+    set undodir=/tmp/.vim-undo-dir
+  endif
+endif
 set undofile
 " Have GDB Alias
 autocmd VimEnter * packadd termdebug
