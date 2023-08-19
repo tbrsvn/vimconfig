@@ -85,7 +85,16 @@ call plug#begin()
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 " Install vim-plug if not found
-if has('unix')
+if has('win64') || has('win32') || has('win16')
+  if empty(glob('~\vimfiles\autoload\plug.vim'))
+    silent ! powershell -Command "
+    \   New-Item -Path ~\vimfiles -Name autoload -Type Directory -Force;
+    \   Invoke-WebRequest
+    \   -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    \   -OutFile ~\vimfiles\autoload\plug.vim
+    \ "
+  endif
+else
   if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
