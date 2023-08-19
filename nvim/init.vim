@@ -159,8 +159,8 @@ require('lualine').setup {
 EOF
 " Fireneovim
 lua << EOF
-vim.g.firenvim_config.localSettings["https?://github\\.com/"] = { takeover = 'always', priority = 1 }
-vim.g.firenvim_config.localSettings["https?://github\\.com/"] = { takeover = 'always', priority = 1 }
+vim.g.firenvim_config.localSettings["https?://github\\.com/"] = { takeover = 'always' }
+vim.g.firenvim_config.localSettings["https?://github\\.com/"] = { takeover = 'always' }
 vim.g.firenvim_config.localSettings['.*'] = { takeover = 'never' }
 EOF
 if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
