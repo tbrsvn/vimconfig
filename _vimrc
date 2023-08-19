@@ -75,6 +75,7 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tc50cal/vim-terminal'
   Plug 'lervag/vimtex'
+  Plug 'mhinz/vim-startify'
   Plug 'Norok-The-Diablo/vim-code-runner'
   Plug 'pbrisbin/vim-mkdir'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
