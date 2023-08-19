@@ -179,10 +179,14 @@ vim.g.firenvim_config = {
         },
         ['https?://github\\.com/'] = {
             takeover = 'always',
+            content  = 'text',
+            selector = 'textarea',
             priority = 1
         },
         ['https?://gitlab\\.com/'] = {
             takeover = 'always', 
+            content  = 'text',
+            selector = 'textarea',
             priority = 1
         }
     }
