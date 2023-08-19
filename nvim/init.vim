@@ -154,6 +154,15 @@ require('lualine').setup {
   }
 }
 EOF
+" Fireneovim
+if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
+  set laststatus=0
+  set noruler
+else
+  set title
+  autocmd VimEnter * NERDTree | wincmd p
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+endif
 " Setup The Plugins
 let g:rainbow_conf = {
   \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4']
@@ -166,6 +175,7 @@ lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
+lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
@@ -176,15 +186,6 @@ require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
 EOF
-" Fireneovim
-if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
-  set laststatus=0
-  set noruler
-else
-  set title
-  autocmd VimEnter * NERDTree | wincmd p
-  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-endif
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
