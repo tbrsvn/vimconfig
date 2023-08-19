@@ -180,6 +180,7 @@ EOF
 " Fireneovim
 if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
   set laststatus=0
+  set noruler
 else
   set title
   autocmd VimEnter * NERDTree | wincmd p
