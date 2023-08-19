@@ -162,11 +162,6 @@ require('lualine').setup {
 }
 EOF
 " Fireneovim
-lua << EOF
-vim.g.firenvim_config.localSettings['.*'] = { takeover = 'never' }
-vim.g.firenvim_config.localSettings["https?://github\\.com/"] = { takeover = 'once' }
-vim.g.firenvim_config.localSettings["https?://gitlab\\.com/"] = { takeover = 'once' }
-EOF
 if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
   set laststatus=0
   set noruler
@@ -176,6 +171,11 @@ else
   autocmd VimEnter * NERDTree | wincmd p
   autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 endif
+lua << EOF
+vim.g.firenvim_config.localSettings['.*'] = { takeover = 'never' }
+vim.g.firenvim_config.localSettings["https?://github\\.com/"] = { takeover = 'once' }
+vim.g.firenvim_config.localSettings["https?://gitlab\\.com/"] = { takeover = 'once' }
+EOF
 " Setup The Plugins
 let g:rainbow_conf = {
   \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4']
