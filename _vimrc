@@ -131,6 +131,7 @@ let g:CodeRunnerCommandMap = {
   \ 'php' : 'php $fileName',
   \ 'javascript' : 'node $fileName'
   \ }
+nmap <leader>r <plug>CodeRunner
 " Configure Plugin Shortcuts
 " Markdown Previewer
 nmap <F5> <Plug>MarkdownPreview
