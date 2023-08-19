@@ -75,8 +75,7 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
   Plug 'tc50cal/vim-terminal'
   Plug 'lervag/vimtex'
-  Plug 'mhinz/vim-startify'
-  Plug 'Norok-The-Diablo/vim-code-runner'
+  Plug 'xianzhon/vim-code-runner'
   Plug 'pbrisbin/vim-mkdir'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -87,13 +86,17 @@ call plug#begin()
 call plug#end()
 " Install vim-plug if not found
 if has('win64') || has('win32') || has('win16')
-  if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
-    silent !curl -fLo C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  if empty(glob('~\vimfiles\autoload\plug.vim'))
+    silent ! powershell -Command "
+    \   New-Item -Path ~\vimfiles -Name autoload -Type Directory -Force;
+    \   Invoke-WebRequest
+    \   -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    \   -OutFile ~\vimfiles\autoload\plug.vim
+    \ "
   endif
 else
-  if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 endif
@@ -112,7 +115,7 @@ let g:airline_theme = 'catppuccin_mocha'
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
-autocmd VimEnter * NERDTree | wincmd p
+silent! autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let $LANG='en_US.UTF-8'
 let g:rainbow_active = 1
@@ -120,7 +123,7 @@ silent! let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
 " Code Runner
 let g:CodeRunnerCommandMap = {
-  \ 'python' : 'python3 $fileName'
+  \ 'python' : 'python3 $fileName',
   \ 'go' : 'go run $fileName',
   \ 'perl' : 'perl $fileName',
   \ 'lua' : 'lua $fileName',
