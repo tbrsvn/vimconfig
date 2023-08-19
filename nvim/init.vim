@@ -118,12 +118,7 @@ call plug#begin()
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 " Install vim-plug if not found
-if has('win64') || has('win32') || has('win16')
-  if empty(glob('C:\Users\%USERNAME%\AppData\Local\nvim\autoload\plug.vim'))
-    silent !curl -fLo autoload\plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
-else
+if has('unix')
   if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -159,13 +154,14 @@ require('lualine').setup {
 EOF
 " Fireneovim
 lua << EOF
+vim.g.firenvim_config.localSettings['.*'] = { takeover = 'never' }
 vim.g.firenvim_config.localSettings["https?://github\\.com/"] = { takeover = 'once' }
 vim.g.firenvim_config.localSettings["https?://gitlab\\.com/"] = { takeover = 'once' }
-vim.g.firenvim_config.localSettings['.*'] = { takeover = 'never' }
 EOF
 if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
   set laststatus=0
   set noruler
+  set shm-F
 else
   set title
   autocmd VimEnter * NERDTree | wincmd p
