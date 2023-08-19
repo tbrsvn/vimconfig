@@ -108,8 +108,7 @@ call plug#begin()
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'catppuccin/nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'preservim/nerdtree' |
@@ -281,8 +280,11 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-" Fuzzy Finder
-nnoremap <leader>ff <cmd>lua require('fzf-lua').files()<cr>
+" Telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Coc
 function! s:check_back_space() abort
   let col = col('.') - 1
