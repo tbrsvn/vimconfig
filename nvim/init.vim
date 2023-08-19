@@ -27,8 +27,6 @@ set updatetime=250
 " Enable Mouse
 set mouse=a
 set mousehide
-" Show The File Currently Being Edited
-set title
 " Confirm You Want To Close Unsaved File
 set confirm
 " Enable Spellchecking
@@ -183,6 +181,7 @@ EOF
 if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
   set laststatus=0
 else
+  set title
   autocmd VimEnter * NERDTree | wincmd p
   autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 endif
