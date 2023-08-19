@@ -121,11 +121,11 @@ let g:coc_disable_startup_warning = 1
 " Code Runner
 let g:CodeRunnerCommandMap = {
   \ 'python' : 'python3 $fileName'
-  \ 'go' : 'go run $fileName'
-  \ 'perl' : 'perl $fileName'
-  \ 'lua' : 'lua $fileName'
-  \ 'ruby' : 'ruby $fileName'
-  \ 'php' : 'php $fileName'
+  \ 'go' : 'go run $fileName',
+  \ 'perl' : 'perl $fileName',
+  \ 'lua' : 'lua $fileName',
+  \ 'ruby' : 'ruby $fileName',
+  \ 'php' : 'php $fileName',
   \ 'javascript' : 'node $fileName'
   \ }
 " Configure Plugin Shortcuts
