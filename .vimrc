@@ -1,4 +1,3 @@
-" Settings
 " Show Line Numbers
 set number relativenumber
 " Wrap Text
