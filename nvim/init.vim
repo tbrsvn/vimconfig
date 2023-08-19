@@ -166,6 +166,28 @@ else
   autocmd VimEnter * NERDTree | wincmd p
   autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 endif
+lua << EOF
+vim.g.firenvim_config = {
+    globalSettings = { alt = "all" },
+    localSettings = {
+        [".*"] = {
+            cmdline  = 'neovim',
+            content  = 'text',
+            priority = 0,
+            selector = 'textarea',
+            takeover = 'never'
+        },
+        ["https?://[^/]+\\gitlab\\.com/"] = {
+            takeover = 'always',
+            priority = 1
+        },
+        ["https?://[^/]+\\github\\.com/"] = {
+            takeover = 'always', 
+            priority = 1
+        }
+    }
+}
+EOF
 " Setup The Plugins
 let g:rainbow_conf = {
   \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4']
