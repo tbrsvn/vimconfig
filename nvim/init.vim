@@ -177,11 +177,11 @@ vim.g.firenvim_config = {
             selector = 'textarea',
             takeover = 'never'
         },
-        ['https?://[^/]+\\gitlab\\.com\\[^/]+/'] = {
+        ['https?://github\\.com/'] = {
             takeover = 'always',
             priority = 1
         },
-        ['https?://[^/]+\\github\\.com\\[^/]+/'] = {
+        ['https?://gitlab\\.com/'] = {
             takeover = 'always', 
             priority = 1
         }
