@@ -88,6 +88,7 @@ call plug#begin()
   Plug 'lervag/vimtex'
   Plug 'xianzhon/vim-code-runner'
   Plug 'pbrisbin/vim-mkdir'
+  Plug 'mhinz/vim-startify'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
