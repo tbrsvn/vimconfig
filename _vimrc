@@ -87,6 +87,7 @@ call plug#begin()
   Plug 'tc50cal/vim-terminal'
   Plug 'lervag/vimtex'
   Plug 'xianzhon/vim-code-runner'
+  Plug 'ryanoasis/vim-devicons'
   Plug 'pbrisbin/vim-mkdir'
   Plug 'mhinz/vim-startify'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
