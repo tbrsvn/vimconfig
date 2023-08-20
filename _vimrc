@@ -35,8 +35,6 @@ set confirm
 set spell
 " Set History Higher
 set history=10000
-" Hide Tilde's
-set fillchars=eob:\
 " Tabs
 set tabstop=4
 set softtabstop=4
