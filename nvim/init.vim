@@ -13,11 +13,6 @@ set shortmess=I
 set showcmd
 " Avoid Wrapping A Line In The Middle Of A Word
 set linebreak
-" Setup Tab Shortcuts
-nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
-nnoremap <silent>    <C-w> <Cmd>BufferClose<CR>
-nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
-nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
 " Make Searching Better
 set hlsearch
 set incsearch
@@ -276,6 +271,11 @@ else
 EOF
 endif
 " Configure Plugin Keybinds
+" Setup Tab Shortcuts
+nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
+nnoremap <silent>    <C-w> <Cmd>BufferClose<CR>
+nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
