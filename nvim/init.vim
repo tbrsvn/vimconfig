@@ -156,6 +156,9 @@ require('lualine').setup {
         lualine_y = {'location'},
         lualine_z = {'ctime'}
   },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
   extensions = {
   'nerdtree'
   }
