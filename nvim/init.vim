@@ -7,7 +7,7 @@ set wrap
 set encoding=utf-8
 " Status Bar
 set laststatus=2
-" No Startup Text
+" No Startup Tesxt
 set shortmess=I
 " Show Current Command
 set showcmd
@@ -108,6 +108,7 @@ call plug#begin()
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'romgrk/barbar.nvim'
   Plug 'catppuccin/nvim'
   Plug 'Norok-The-Diablo/alpha-nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -156,9 +157,6 @@ require('lualine').setup {
         lualine_y = {'location'},
         lualine_z = {'ctime'}
   },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
   extensions = {
   'nerdtree'
   }
@@ -273,6 +271,11 @@ else
 EOF
 endif
 " Configure Plugin Keybinds
+" Setup Tab Shortcuts
+nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
+nnoremap <silent>    <C-w> <Cmd>BufferClose<CR>
+nnoremap <silent>    <C-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <C-.> <Cmd>BufferNext<CR>
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
@@ -299,7 +302,7 @@ endif
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
