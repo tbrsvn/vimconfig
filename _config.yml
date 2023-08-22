@@ -1,0 +1,10 @@
+theme: jekyll-theme-cayman
+title: My Vim Configuration
+author: Toma Brasoveanu
+exclude:
+  - _config.yml
+  - LICENSE
+rss-description: Vim Configuration
+plugins:
+  - jekyll-responsive_image
+  - emoji_for_jekyll
