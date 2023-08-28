@@ -1,5 +1,5 @@
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
-title: My Vim Configuration
+title: My Vim And Neovim Configuration
 author: Toma Brasoveanu
 exclude:
   - _config.yml
