@@ -144,6 +144,11 @@ let g:CodeRunnerCommandMap = {
   \ }
 nmap <leader>r <plug>CodeRunner
 " Configure Plugin Shortcuts
+" Setup Tab Shortcuts
+nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
+nnoremap <silent>    <C-w> <Cmd>BufferClose<CR>
+nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
 " Markdown Previewer
 nmap <F5> <Plug>MarkdownPreview
 nmap <F6> <Plug>MarkdownPreviewStop
