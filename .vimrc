@@ -74,6 +74,22 @@ endif
 set undofile
 " Have GDB Alias
 autocmd VimEnter * packadd termdebug
+" Install Vim-Plug If Not Found
+if has('win64') || has('win32') || has('win16')
+  if empty(glob('~\vimfiles\autoload\plug.vim'))
+    silent ! powershell -Command "
+    \   New-Item -Path ~\vimfiles -Name autoload -Type Directory -Force;
+    \   Invoke-WebRequest
+    \   -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    \   -OutFile ~\vimfiles\autoload\plug.vim
+    \ "
+  endif
+else
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+endif
 " Plugins
 call plug#begin()
   Plug 'luochen1990/rainbow'
@@ -95,23 +111,7 @@ call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
-" Install vim-plug if not found
-if has('win64') || has('win32') || has('win16')
-  if empty(glob('~\vimfiles\autoload\plug.vim'))
-    silent ! powershell -Command "
-    \   New-Item -Path ~\vimfiles -Name autoload -Type Directory -Force;
-    \   Invoke-WebRequest
-    \   -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    \   -OutFile ~\vimfiles\autoload\plug.vim
-    \ "
-  endif
-else
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
-endif
-" Run PlugInstall and PlugClean if there are missing plugins
+" Run PlugInstall And PlugClean If There Are Missing Plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC | PlugClean
   \| endif
