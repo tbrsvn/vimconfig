@@ -75,6 +75,22 @@ else
   endif
 endif
 set undofile
+" Install vim-plug if not found
+if has('win64') || has('win32') || has('win16')
+  if empty(glob('$LOCALAPPDATA\nvim\autoload\plug.vim'))
+    silent ! powershell -Command "
+    \   New-Item -Path ~\AppData\Local\nvim -Name autoload -Type Directory -Force;
+    \   Invoke-WebRequest
+    \   -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    \   -OutFile ~\AppData\Local\nvim\autoload\plug.vim
+    \ "
+  endif
+else
+  if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
+endif
 " Plugins
 call plug#begin()
 " Plug 'github/copilot.vim'
@@ -117,22 +133,6 @@ call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
-" Install vim-plug if not found
-if has('win64') || has('win32') || has('win16')
-  if empty(glob('$LOCALAPPDATA\nvim\autoload\plug.vim'))
-    silent ! powershell -Command "
-    \   New-Item -Path ~\AppData\Local\nvim -Name autoload -Type Directory -Force;
-    \   Invoke-WebRequest
-    \   -Uri 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    \   -OutFile ~\AppData\Local\nvim\autoload\plug.vim
-    \ "
-  endif
-else
-  if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  endif
-endif
 " Run PlugInstall and PlugClean if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC | PlugClean
