@@ -193,7 +193,7 @@ lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
-lua require("auto-session").setup
+lua require('auto-session').setup()
 lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
