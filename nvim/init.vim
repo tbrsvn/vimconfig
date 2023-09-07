@@ -108,6 +108,7 @@ call plug#begin()
   Plug 'mistweaverco/Screenshot.nvim'
   Plug 'gbprod/stay-in-place.nvim'
   Plug 'tpope/vim-surround'
+  Plug 'yegappan/mru'
   Plug 'Norok-The-Diablo/minesweeper.nvim'
   Plug 'tpope/vim-commentary'
   Plug 'alanfortlink/blackjack.nvim'
