@@ -120,6 +120,7 @@ call plug#begin()
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'archibate/lualine-time'
+  Plug 'Shatur/neovim-session-manager'
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
@@ -202,6 +203,18 @@ lua << EOF
 require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
+EOF
+" Session Manager
+lua << EOF
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  group = config_group,
+  callback = function ()
+    if vim.bo.filetype ~= 'git'
+      and not vim.bo.filetype ~= 'gitcommit'
+      and not vim.bo.filetype ~= 'gitrebase'
+      then session_manager.save_current_session() end
+  end
+})
 EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
