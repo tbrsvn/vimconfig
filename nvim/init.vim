@@ -348,7 +348,7 @@ if has('patch-8.1.1564')
 else
   set signcolumn=no
 endif
-let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-markdownlint', 'coc-docker', 'coc-sh', 'coc-snippets', 'coc-rust-analyzer', 'coc-go' 'coc-css', 'coc-cssmodules', 'coc-r-lsp', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
+let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-markdownlint', 'coc-docker', 'coc-sh', 'coc-snippets', 'coc-rust-analyzer', 'coc-go', 'coc-css', 'coc-cssmodules', 'coc-r-lsp', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
 
 " --- Notes About Installing Plugins ---
 " :PlugInstall :PlugClean :UpdateRemotePlugins
