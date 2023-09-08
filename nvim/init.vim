@@ -128,7 +128,7 @@ call plug#begin()
   Plug 'catppuccin/nvim'
   Plug 'Norok-The-Diablo/alpha-nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+  Plug 'Norok-The-Diablo/telescope.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
