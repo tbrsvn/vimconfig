@@ -273,7 +273,7 @@ EOF
 endif
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { 'c', 'lua', 'javascript', 'go', 'html', 'typescript', 'python', 'arduino', 'json', 'yaml', 'bash', 'dockerfile', 'markdown', 'markdown_inline', 'latex', 'xml', 'toml', 'css', 'java', 'rust', 'vim', 'vimdoc', 'query' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'javascript', 'go', 'html', 'typescript', 'python', 'arduino', 'json', 'yaml', 'bash', 'dockerfile', 'markdown', 'markdown_inline', 'latex', 'xml', 'toml', 'css', 'java', 'rust', 'vim', 'vimdoc', 'query' },
   sync_install = false,
   auto_install = true,
 
