@@ -273,14 +273,14 @@ EOF
 endif
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "javascript", "typescript", "python", "arduino", "cpp", "json", "java", "rust", "vim", "vimdoc", "query" },
+  ensure_installed = { 'c', 'lua', 'javascript', 'go', 'html', 'typescript', 'python', 'arduino', 'json', 'yaml', 'bash', 'dockerfile', 'markdown', 'markdown_inline', 'latex', 'xml' 'toml', 'css', 'java', 'rust', 'vim', 'vimdoc', 'query' },
   sync_install = false,
   auto_install = true,
 
   highlight = {
     enable = true,
     disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
+        local max_filesize = 100 * 1024
         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
         if ok and stats and stats.size > max_filesize then
             return true
@@ -348,8 +348,8 @@ if has('patch-8.1.1564')
 else
   set signcolumn=no
 endif
-let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-snippets', 'coc-css', 'coc-cssmodules', 'coc-r-lsp', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
+let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-html', 'coc-markdownlint', 'coc-docker', 'coc-sh', 'coc-snippets', 'coc-rust-analyzer', 'coc-go' 'coc-css', 'coc-cssmodules', 'coc-r-lsp', 'coc-discord', 'coc-clangd', 'coc-python', 'coc-java', 'coc-texlab', 'coc-xml', 'coc-yaml']
 
 " --- Notes About Installing Plugins ---
 " :PlugInstall :PlugClean :UpdateRemotePlugins
-" :CocInstall coc-pairs coc-json coc-tsserver coc-html coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-r-lsp coc-texlab coc-xml coc-yaml
+" :CocInstall coc-pairs coc-json coc-tsserver coc-html coc-docker coc-markdownlint coc-sh coc-rust-analyzer coc-go coc-snippets coc-css coc-cssmodules coc-discord coc-clangd coc-python coc-java coc-r-lsp coc-texlab coc-xml coc-yaml
