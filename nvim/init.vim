@@ -94,6 +94,7 @@ endif
 " Plugins
 call plug#begin()
 " Plug 'github/copilot.vim'
+  Plug 'lewis6991/impatient.nvim'
   Plug 'numToStr/Comment.nvim'
   Plug 'EtiamNullam/deferred-clipboard.nvim'
   Plug 'CRAG666/code_runner.nvim'
@@ -135,6 +136,8 @@ call plug#begin()
   Plug 'preservim/nerdtree' |
               \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
+" Faster Loading Of Plugins
+lua require('impatient')
 " Run PlugInstall And PlugClean If There Are Missing Plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC | PlugClean
@@ -193,7 +196,7 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
 let g:auto_session_pre_save_cmds = ['tabdo NERDTreeClose']
-let g:auto_session_post_restore_cmds = ['NERDTree | wincmd p']
+let g:auto_session_post_restore_cmds = ['NERDTree | wincmd p', '']
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
