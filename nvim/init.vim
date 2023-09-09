@@ -206,11 +206,6 @@ lua require('auto-session').setup( {auto_restore_enabled = false } )
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
 silent! let g:auto_save = 1
-" Auto-Close Startup Screen
-augroup CloseAlphaWindow
-  autocmd!
-  autocmd WinEnter * if &filetype == 'alpha' | q | endif
-augroup END
 " Clipboard
 lua << EOF
 require('deferred-clipboard').setup {
