@@ -191,14 +191,14 @@ endif
 " Rainbow Grouping Symbols
 let g:rainbow_delimiters = {
   \ 'highlight': [
-    \ guifg='#ec9ca4', 
-    \ guifg='#89cedc', 
-    \ guifg='#b6bdf9',
-    \ guifg='#a4dc94',
-    \ guifg='#e4cce4',
-    \ guifg='#8cacf4',
-    \ guifg='#f4c4c4',
-    \ guifg='#c4a4f4' 
+    \ '#ec9ca4', 
+    \ '#89cedc', 
+    \ '#b6bdf9',
+    \ '#a4dc94',
+    \ '#e4cce4',
+    \ '#8cacf4',
+    \ '#f4c4c4',
+    \ '#c4a4f4' 
   \ ],
 \ }
 " Setup The Plugins
