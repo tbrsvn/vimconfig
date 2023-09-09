@@ -195,7 +195,7 @@ let $LANG='en_US.UTF-8'
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
-let g:auto_session_pre_save_cmds = ['tabdo NERDTreeClose']
+let g:auto_session_pre_save_cmds = ['tabdo NERDTreeClose', 'tabdo Alpha']
 let g:auto_session_post_restore_cmds = ['NERDTree | wincmd p']
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
