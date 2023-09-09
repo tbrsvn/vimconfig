@@ -196,7 +196,7 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
 let g:auto_session_pre_save_cmds = ['tabdo NERDTreeClose']
-let g:auto_session_post_restore_cmds = ['NERDTree | wincmd p' , 'tabdo if empty(getbufline(bufnr(''), 1, '$')) | bd | endif']
+let g:auto_session_post_restore_cmds = ["NERDTree | wincmd p", "tabdo if empty(getbufline(bufnr(''), 1, '$')) | bd | endif"]
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
