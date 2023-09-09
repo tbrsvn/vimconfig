@@ -124,7 +124,7 @@ call plug#begin()
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'romgrk/barbar.nvim'
+  Plug 'akinsho/bufferline.nvim'
   Plug 'catppuccin/nvim'
   Plug 'Norok-The-Diablo/alpha-nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -295,7 +295,7 @@ EOF
 " Configure Plugin Keybinds
 " Setup Tab Shortcuts
 nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
-nnoremap <silent>    <C-w> <Cmd>BufferClose<CR>
+nnoremap <silent>    <C-w> <Cmd>:q<CR>
 nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
 nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
 " Knap And Markdown Preview
