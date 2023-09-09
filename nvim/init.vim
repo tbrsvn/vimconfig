@@ -99,7 +99,7 @@ call plug#begin()
   Plug 'EtiamNullam/deferred-clipboard.nvim'
   Plug 'CRAG666/code_runner.nvim'
   Plug 'alec-gibson/nvim-tetris'
-  Plug 'luochen1990/rainbow'
+  Plug 'p00f/nvim-ts-rainbow'
   Plug 'ThePrimeagen/vim-be-good'
   Plug 'seandewar/killersheep.nvim'
   Plug 'tpope/vim-fugitive'
@@ -107,6 +107,7 @@ call plug#begin()
   Plug 'chrisgrieser/nvim-genghis'
   Plug '907th/vim-auto-save'
   Plug 'mistweaverco/Screenshot.nvim'
+  Plug 'yegappan/mru'
   Plug 'gbprod/stay-in-place.nvim'
   Plug 'tpope/vim-surround'
   Plug 'Norok-The-Diablo/minesweeper.nvim'
@@ -187,8 +188,8 @@ else
   autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
   lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 endif
-" Setup The Plugins
 lua require'nvim-treesitter.configs'.setup( { colors = { '#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4' }, } )
+" Setup The Plugins
 let $LANG='en_US.UTF-8'
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
