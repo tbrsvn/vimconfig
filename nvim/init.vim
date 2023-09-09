@@ -52,10 +52,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Make It So When You Split It Goes To The Right
 set splitbelow splitright
 " Make Hopping Around Split Windows Easier
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <C-h> <cmd>wincmd h <CR>
+map <C-j> <cmd>wincmd j <CR>
+map <C-k> <cmd>wincmd k <CR>
+map <C-l> <cmd>wincmd l <CR>
 " Remap S Which Is Equal To The Command cc To A Find And Replace Function
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
@@ -120,10 +120,9 @@ call plug#begin()
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'archibate/lualine-time'
-  Plug 'folke/persistence.nvim'
+  Plug 'rmagatti/auto-session'
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'yegappan/mru'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'akinsho/bufferline.nvim'
   Plug 'catppuccin/nvim'
@@ -178,6 +177,7 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
   set laststatus=0
   set noruler
   set shortmess=F
+  let g:auto_session_enabled = v:false
 else
   set title
   autocmd VimEnter * NERDTree | wincmd p
@@ -192,10 +192,13 @@ let $LANG='en_US.UTF-8'
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
+let g:auto_session_pre_save_cmds = ['tabdo NERDTreeClose']
+let g:auto_session_post_restore_cmds = ['NERDTree | wincmd p']
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
+lua require('auto-session').setup( {auto_restore_enabled = false} )
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
