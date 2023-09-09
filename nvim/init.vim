@@ -202,7 +202,7 @@ lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
-lua require('auto-session').setup( {auto_restore_enabled = false, bypass_session_save_file_types = { "dashboard", }, } )
+lua require('auto-session').setup( {auto_restore_enabled = false, bypass_session_save_file_types = { 'alpha', }, } )
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
 silent! let g:auto_save = 1
