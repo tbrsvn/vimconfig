@@ -302,8 +302,8 @@ EOF
 " Setup Tab Shortcuts
 nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
 nnoremap <silent>    <C-w> <Cmd>:q<CR>
-nnoremap <silent>    <A-,> <Cmd>:tabnext<CR>
-nnoremap <silent>    <A-.> <Cmd>:tabprevious<CR>
+nnoremap <silent>    <A-l> <Cmd>:tabnext<CR>
+nnoremap <silent>    <A-h> <Cmd>:tabprevious<CR>
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
