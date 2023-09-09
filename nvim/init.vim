@@ -123,6 +123,7 @@ call plug#begin()
   Plug 'folke/persistence.nvim'
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'yegappan/mru'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'akinsho/bufferline.nvim'
   Plug 'catppuccin/nvim'
