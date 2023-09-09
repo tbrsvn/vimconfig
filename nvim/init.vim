@@ -209,7 +209,7 @@ silent! let g:auto_save = 1
 " Auto-Close Startup Screen
 augroup CloseAlphaWindow
   autocmd!
-  autocmd WinEnter * if &filetype != 'alpha' | silent! q | endif
+  autocmd WinEnter * if &filetype == 'alpha' | q | endif
 augroup END
 " Clipboard
 lua << EOF
