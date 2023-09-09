@@ -120,7 +120,7 @@ call plug#begin()
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'archibate/lualine-time'
-  Plug 'Shatur/neovim-session-manager'
+  Plug 'folke/persistence.nvim'
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
@@ -181,6 +181,7 @@ else
   set title
   autocmd VimEnter * NERDTree | wincmd p
   autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+  lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 endif
 " Setup The Plugins
 let g:rainbow_conf = {
@@ -194,7 +195,6 @@ lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
-lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
@@ -204,14 +204,6 @@ lua << EOF
 require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
-EOF
-" Session Manager
-lua << EOF
-local Path = require('plenary.path')
-local config = require('session_manager.config')
-require('session_manager').setup ({
-  autoload_mode = config.AutoloadMode.Disabled,
-})
 EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
