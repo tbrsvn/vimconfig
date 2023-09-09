@@ -195,7 +195,6 @@ lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
-lua require('session_manager').setup( {autoload_mode = config.AutoloadMode.Disabled })
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
@@ -205,6 +204,12 @@ lua << EOF
 require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
+EOF
+" Session Manager
+lua << EOF
+require('session_manager').setup ({
+autoload_mode = config.AutoloadMode.Disabled,
+})
 EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
