@@ -196,7 +196,7 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
 let g:auto_session_pre_save_cmds = ['tabdo NERDTreeClose']
-let g:auto_session_post_restore_cmds = ["NERDTree | wincmd p", "bufdo if empty(getbufline(bufnr(''), 1, '$')) | bd | endif"]
+let g:auto_session_post_restore_cmds = ['NERDTree | wincmd p']
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
@@ -206,6 +206,11 @@ lua require('auto-session').setup( {auto_restore_enabled = false } )
 let g:rainbow_active = 1
 let g:coc_disable_startup_warning = 1
 silent! let g:auto_save = 1
+" Auto-Close Startup Screen
+augroup CloseAlphaWindow
+  autocmd!
+  autocmd WinEnter * if &filetype != 'alpha' | silent! q | endif
+augroup END
 " Clipboard
 lua << EOF
 require('deferred-clipboard').setup {
