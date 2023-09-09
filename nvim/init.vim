@@ -200,7 +200,7 @@ let g:rainbow_delimiters = {
     \ '#f4c4c4',
     \ '#c4a4f4' 
   \ ],
-}
+\ }
 " Setup The Plugins
 let $LANG='en_US.UTF-8'
 let NERDTreeShowHidden=1
