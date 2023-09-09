@@ -189,16 +189,24 @@ else
   lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 endif
 " Rainbow Grouping Symbols
+highlight rainbowcol1 guifg=#ec9ca4
+highlight rainbowcol2 guifg=#89cedc
+highlight rainbowcol3 guifg=#b6bdf9
+highlight rainbowcol4 guifg=#a4dc94
+highlight rainbowcol5 guifg=#e4cce4
+highlight rainbowcol6 guifg=#8cacf4
+highlight rainbowcol7 guifg=#f4c4c4
+highlight rainbowcol8 guifg=#c4a4f4
 let g:rainbow_delimiters = {
   \ 'highlight': [
-    \ '#ec9ca4', 
-    \ '#89cedc', 
-    \ '#b6bdf9',
-    \ '#a4dc94',
-    \ '#e4cce4',
-    \ '#8cacf4',
-    \ '#f4c4c4',
-    \ '#c4a4f4' 
+    \ 'rainbowcol1', 
+    \ 'rainbowcol2', 
+    \ 'rainbowcol3',
+    \ 'rainbowcol4',
+    \ 'rainbowcol5',
+    \ 'rainbowcol6',
+    \ 'rainbowcol7',
+    \ 'rainbowcol8', 
   \ ],
 \ }
 " Setup The Plugins
