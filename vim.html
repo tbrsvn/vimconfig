@@ -56,10 +56,10 @@ set wildmode=longest,list,full
 " Make It So When You Split It Goes To The Right
 set splitbelow splitright
 " Make Hopping Around Split Windows Easier
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <C-h> <cmd>wincmd h <CR>
+map <C-j> <cmd>wincmd j <CR>
+map <C-k> <cmd>wincmd k <CR>
+map <C-l> <cmd>wincmd l <CR>
 " Remap S Which Is Equal To The Command cc To A Find And Replace Function
 nnoremap S :%s//g<Left><Left>
 " Delete Whitespace On Save
