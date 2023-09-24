@@ -75,6 +75,22 @@ else
   endif
 endif
 set undofile
+" Grab Coc Settings
+if has('win64') || has('win32') || has('win16')
+  if empty(glob('$LOCALAPPDATA\nvim\coc-settings.json'))
+    silent ! powershell -Command "
+    \   New-Item -Path ~\AppData\Local\nvim -Name autoload -Type Directory -Force;
+    \   Invoke-WebRequest
+    \   -Uri 'https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/nvim/coc-settings.json'
+    \   -OutFile ~\AppData\Local\nvim\coc-settings.json
+    \ "
+  endif
+else
+  if empty(glob('~/.config/nvim/coc-settings.json'))
+    silent !curl -fLo ~/.config/nvim/coc-settings.json --create-dirs
+      \ https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/nvim/coc-settings.json
+  endif
+endif
 " Install vim-plug if not found
 if has('win64') || has('win32') || has('win16')
   if empty(glob('$LOCALAPPDATA\nvim\autoload\plug.vim'))
