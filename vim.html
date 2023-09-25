@@ -79,6 +79,22 @@ endif
 set undofile
 " Have GDB Alias
 autocmd VimEnter * packadd termdebug
+" Grab Coc Settings
+if has('win64') || has('win32') || has('win16')
+  if empty(glob('~\vimfiles\coc-settings.json'))
+    silent ! powershell -Command "
+    \   New-Item -Path ~\vimfiles -Name autoload -Type Directory -Force;
+    \   Invoke-WebRequest
+    \   -Uri 'https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/vimfiles/coc-settings.json'
+    \   -OutFile ~\vimfiles\coc-settings.json
+    \ "
+  endif
+else
+  if empty(glob('~/.vim/coc-settings.json'))
+    silent !curl -fLo ~/.vim/coc-settings.json --create-dirs
+      \ https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/.vim/coc-settings.json
+  endif
+endif
 " Install Vim-Plug If Not Found
 if has('win64') || has('win32') || has('win16')
   if empty(glob('~\vimfiles\autoload\plug.vim'))
