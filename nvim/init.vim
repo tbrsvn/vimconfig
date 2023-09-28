@@ -126,6 +126,7 @@ call plug#begin()
   Plug 'mistweaverco/Screenshot.nvim'
   Plug 'yegappan/mru'
   Plug 'gbprod/stay-in-place.nvim'
+  Plug 'mbbill/undotree'
   Plug 'tpope/vim-surround'
   Plug 'Norok-The-Diablo/minesweeper.nvim'
   Plug 'tpope/vim-commentary'
@@ -338,6 +339,8 @@ nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
 nnoremap <silent>    <C-w> <Cmd>:q<CR>
 nnoremap <silent>    <A-l> <Cmd>:tabnext<CR>
 nnoremap <silent>    <A-h> <Cmd>:tabprevious<CR>
+" Undo Tree
+nnoremap <leader>ut :UndotreeToggle<CR>
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
