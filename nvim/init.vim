@@ -247,11 +247,6 @@ require('deferred-clipboard').setup {
   fallback = 'unnamedplus',
 }
 EOF
-" LSP
-lua << EOF
-local lsp_zero = require('lsp-zero')
-lsp_zero.setup_servers({'lua_ls', 'rust_analyzer'})
-EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
