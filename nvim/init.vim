@@ -250,8 +250,8 @@ EOF
 lua << EOF
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
+vim.api.nvim_set_keymap("n", "<leader>a", mark.add_file)
+vim.api.nvim_set_keymap("n", "<leader>h", ui.toggle_quick_menu)
 EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
