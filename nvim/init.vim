@@ -140,6 +140,7 @@ call plug#begin()
   Plug 'nvim-tree/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'archibate/lualine-time'
+  Plug 'ThePrimeagen/harpoon'
   Plug 'rmagatti/auto-session'
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
@@ -246,6 +247,13 @@ lua << EOF
 require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
+EOF
+" Harpoon
+lua << EOF
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+vim.keymap.set("n", "<leader>a", mark.add_file)
+vim.keymap.set("n", "<leader>h", ui.toggle_quick_menu)
 EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
