@@ -148,8 +148,14 @@ call plug#begin()
   Plug 'akinsho/bufferline.nvim'
   Plug 'catppuccin/nvim'
   Plug 'Norok-The-Diablo/alpha-nvim'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'L3MON4D3/LuaSnip'
   Plug 'Norok-The-Diablo/telescope.nvim'
+  Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -246,9 +252,11 @@ require('deferred-clipboard').setup {
   fallback = 'unnamedplus', -- or your preferred setting for clipboard
 }
 EOF
-" Harpoon
-nnoremap <leader>a :lua require("harpoon.mark").add_file() <CR>
-nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu() <CR>
+" LSP
+lua << EOF
+local lsp_zero = require('lsp-zero')
+lsp_zero.setup_servers({'lua_ls', 'rust_analyzer'})
+EOF
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
@@ -343,6 +351,9 @@ nnoremap <silent>    <A-l> <Cmd>:tabnext<CR>
 nnoremap <silent>    <A-h> <Cmd>:tabprevious<CR>
 " Undo Tree
 nnoremap <leader>ut :UndotreeToggle<CR>
+" Harpoon
+nnoremap <leader>a :lua require("harpoon.mark").add_file() <CR>
+nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu() <CR>
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
