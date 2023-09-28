@@ -44,7 +44,7 @@ set autoindent
 " Make Vim Act Normal In Windows
 set nocompatible
 " Turn On Syntax
-syntax on
+syntax enable
 let g:is_posix=1
 " Enable Autocompletion
 set wildmode=longest,list,full
