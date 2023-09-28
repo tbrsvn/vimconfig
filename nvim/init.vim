@@ -201,8 +201,6 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim == 1
   let g:auto_session_enabled = v:false
 else
   set title
-  autocmd VimEnter * NERDTree | wincmd p
-  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
   lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 endif
 " Rainbow Grouping Symbols
@@ -373,6 +371,7 @@ else
   nnoremap <silent> <F8> :lua require('knap').forward_jump()<CR>
 endif
 " Nerdtree
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-e> :NERDTreeToggle<CR>
