@@ -248,7 +248,7 @@ require('deferred-clipboard').setup {
 EOF
 " Harpoon
 nnoremap <leader>a :lua require("harpoon.mark").add_file() <CR>
-nnoremap <leader>a :lua require("harpoon.ui").toggle_quick_menu() <CR>
+nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu() <CR>
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
