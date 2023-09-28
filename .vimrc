@@ -120,6 +120,7 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'
   Plug 'pbrisbin/vim-mkdir'
   Plug 'mhinz/vim-startify'
+  Plug 'mbbill/undotree'
   Plug 'catppuccin/vim', { 'as': 'catppuccin' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -165,6 +166,8 @@ nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
 nnoremap <silent>    <C-w> <Cmd>BufferClose<CR>
 nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
 nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
+" Undo Tree
+nnoremap <leader>ut :UndotreeToggle<CR>
 " Markdown Previewer
 nmap <F5> <Plug>MarkdownPreview
 nmap <F6> <Plug>MarkdownPreviewStop
