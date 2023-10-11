@@ -130,6 +130,7 @@ call plug#begin()
   Plug '907th/vim-auto-save'
   Plug 'mistweaverco/Screenshot.nvim'
   Plug 'yegappan/mru'
+  Plug 'windwp/nvim-ts-autotag'
   Plug 'gbprod/stay-in-place.nvim'
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-surround'
@@ -219,14 +220,14 @@ highlight rainbowcol7 guifg=#f4c4c4
 highlight rainbowcol8 guifg=#c4a4f4
 let g:rainbow_delimiters = {
   \ 'highlight': [
-    \ 'rainbowcol1', 
-    \ 'rainbowcol2', 
+    \ 'rainbowcol1',
+    \ 'rainbowcol2',
     \ 'rainbowcol3',
     \ 'rainbowcol4',
     \ 'rainbowcol5',
     \ 'rainbowcol6',
     \ 'rainbowcol7',
-    \ 'rainbowcol8', 
+    \ 'rainbowcol8',
   \ ],
 \ }
 " Setup The Plugins
@@ -240,6 +241,7 @@ lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
+lua require('nvim-ts-autotag').setup()
 lua require('telescope').load_extension('harpoon')
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 lua require('auto-session').setup( {auto_restore_enabled = false } )
