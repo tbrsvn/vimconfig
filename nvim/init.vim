@@ -236,6 +236,7 @@ lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
+lua require('nvim-ts-autotag').setup()
 lua require('telescope').load_extension('harpoon')
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 lua require('auto-session').setup( {auto_restore_enabled = false } )
@@ -331,9 +332,6 @@ require'nvim-treesitter.configs'.setup {
     end,
 
     additional_vim_regex_highlighting = false,
-  },
-  autotag = {
-    enable = true,
   },
 }
 EOF
