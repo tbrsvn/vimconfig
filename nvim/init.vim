@@ -125,6 +125,7 @@ call plug#begin()
   Plug '907th/vim-auto-save'
   Plug 'mistweaverco/Screenshot.nvim'
   Plug 'yegappan/mru'
+  Plug 'windwp/nvim-ts-autotag'
   Plug 'gbprod/stay-in-place.nvim'
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-surround'
@@ -214,14 +215,14 @@ highlight rainbowcol7 guifg=#f4c4c4
 highlight rainbowcol8 guifg=#c4a4f4
 let g:rainbow_delimiters = {
   \ 'highlight': [
-    \ 'rainbowcol1', 
-    \ 'rainbowcol2', 
+    \ 'rainbowcol1',
+    \ 'rainbowcol2',
     \ 'rainbowcol3',
     \ 'rainbowcol4',
     \ 'rainbowcol5',
     \ 'rainbowcol6',
     \ 'rainbowcol7',
-    \ 'rainbowcol8', 
+    \ 'rainbowcol8',
   \ ],
 \ }
 " Setup The Plugins
@@ -328,6 +329,8 @@ require'nvim-treesitter.configs'.setup {
             return true
         end
     end,
+  autotag = {
+    enable = true,
 
     additional_vim_regex_highlighting = false,
   },
