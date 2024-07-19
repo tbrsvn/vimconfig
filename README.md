@@ -1,3 +1,3 @@
 # My Vim And Neovim Configuration
 This is my (Neo)Vim config with an easy updater for Windows and Linux. You just have to run the script according to your operating system and it will put the configurations in the right place. Run the Install Font.bat file as admin.
-Run ```pip3 install pynvim pylint``` if you get errors about Python. Otherwise, you just need to install ```node``` and ```npm``` for the LSP server and ```treesitter``` for treesitter parsing in neovim. I have provided a Windows treesitter binary that you just need to add to your path if you are on Windows.
+Run ```pip3 install pynvim pylint jedi``` for Python support. If you do not need Python support, you just need to install ```node``` and ```npm``` for the LSP server and ```treesitter``` for treesitter parsing in neovim. I have provided a Windows treesitter binary that you just need to add to your path if you are on Windows.
