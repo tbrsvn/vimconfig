@@ -1,4 +1,4 @@
-" Settings
+"Settings
 " Show Line Numbers
 set number relativenumber
 " Wrap Text
@@ -7,7 +7,7 @@ set wrap
 set encoding=utf-8
 " Status Bar
 set laststatus=2
-" No Startup Tesxt
+" No Startup Text
 set shortmess=I
 " Show Current Command
 set showcmd
@@ -57,7 +57,7 @@ map <C-j> <cmd>wincmd j <CR>
 map <C-k> <cmd>wincmd k <CR>
 map <C-l> <cmd>wincmd l <CR>
 " Remap S Which Is Equal To The Command cc To A Find And Replace Function
-nnoremap S :%s//g<Left><Left>
+nnoremap S :%s//replacement<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " Delete Whitespace On Save
 autocmd BufWritePre * %s/\s\+$//e
 " Setup GDB Alias
@@ -115,6 +115,7 @@ call plug#begin()
   Plug 'numToStr/Comment.nvim'
   Plug 'EtiamNullam/deferred-clipboard.nvim'
   Plug 'CRAG666/code_runner.nvim'
+  Plug 'Norok-The-Diablo/telescope.nvim'
   Plug 'alec-gibson/nvim-tetris'
   Plug 'HiPhish/rainbow-delimiters.nvim'
   Plug 'ThePrimeagen/vim-be-good'
@@ -131,6 +132,7 @@ call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'Norok-The-Diablo/minesweeper.nvim'
   Plug 'tpope/vim-commentary'
+  Plug 'Norok-The-Diablo/alpha-nvim'
   Plug 'alanfortlink/blackjack.nvim'
   Plug 'tc50cal/vim-terminal'
   Plug 'NvChad/nvim-colorizer.lua'
@@ -142,15 +144,19 @@ call plug#begin()
   Plug 'nvim-lua/plenary.nvim'
   Plug 'archibate/lualine-time'
   Plug 'ThePrimeagen/harpoon'
+  Plug 'folke/which-key.nvim'
   Plug 'rmagatti/auto-session'
+  Plug 'echasnovski/mini.nvim'
+  Plug 'rcarriga/nvim-notify'
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'Norok-The-Diablo/battery.nvim'
   Plug 'akinsho/bufferline.nvim'
   Plug 'catppuccin/nvim'
-  Plug 'Norok-The-Diablo/alpha-nvim'
-  Plug 'Norok-The-Diablo/telescope.nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'Norok-The-Diablo/telescope.nvim'
+  Plug 'fannheyward/telescope-coc.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -164,24 +170,73 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " Update Plugins
 autocmd VimEnter * silent! UpdateRemotePlugins
 " Theme
+lua << EOF
+require('catppuccin').setup({
+    integrations = {
+        nvimtree = false,
+	    neotree = false,
+	    alpha = true,
+        cmp = true,
+	    harpoon = true,
+        gitsigns = true,
+        treesitter = true,
+	    treesitter_context = true,
+	    coc_nvim = true,
+	    rainbow_delimiters = true,
+	    notify = true,
+	    telescope = true,
+	    mini = true,
+	    which_key = true,
+	    barbecue = {
+    	    dim_dirname = true,
+    	    bold_basename = true,
+   	 	    dim_context = false,
+    	    alt_background = false,
+	    },
+    }
+})
+EOF
+lua << EOF
+require('notify').setup()
+vim.notify = require('notify')
+EOF
 colorscheme catppuccin-mocha
 set background=dark
 lua << EOF
+local batterycolor = '#ec9ca4'
+local battery = require('battery')
+battery.setup({
+	update_rate_seconds = 30,
+	show_status_when_no_battery = true,
+	show_plugged_icon = true,
+	show_unplugged_icon = true,
+	show_percent = true,
+    vertical_icons = true,
+    multiple_battery_selection = 1
+})
+EOF
+lua << EOF
+local nvimbattery = {
+        function()
+            return require('battery').get_status_line()
+        end
+}
 require('lualine').setup {
     options = {
         theme = 'catppuccin',
         icons_enabled = true
     },
+    extensions = {
+	'nerdtree'
+    },
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'location'},
-        lualine_z = {'ctime'}
-  },
-  extensions = {
-  'nerdtree'
+        lualine_w = {'encoding', 'fileformat', 'filetype'},
+        lualine_x = {'location'},
+        lualine_y = {'ctime'},
+        lualine_z = {nvimbattery}
   }
 }
 EOF
@@ -204,27 +259,6 @@ else
   set title
   lua require'alpha'.setup(require'alpha.themes.dashboard'.config)
 endif
-" Rainbow Grouping Symbols
-highlight rainbowcol1 guifg=#ec9ca4
-highlight rainbowcol2 guifg=#89cedc
-highlight rainbowcol3 guifg=#b6bdf9
-highlight rainbowcol4 guifg=#a4dc94
-highlight rainbowcol5 guifg=#e4cce4
-highlight rainbowcol6 guifg=#8cacf4
-highlight rainbowcol7 guifg=#f4c4c4
-highlight rainbowcol8 guifg=#c4a4f4
-let g:rainbow_delimiters = {
-  \ 'highlight': [
-    \ 'rainbowcol1',
-    \ 'rainbowcol2',
-    \ 'rainbowcol3',
-    \ 'rainbowcol4',
-    \ 'rainbowcol5',
-    \ 'rainbowcol6',
-    \ 'rainbowcol7',
-    \ 'rainbowcol8',
-  \ ],
-\ }
 " Setup The Plugins
 let $LANG='en_US.UTF-8'
 let NERDTreeShowHidden=1
@@ -232,12 +266,13 @@ let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
 let g:auto_session_pre_save_cmds = ['tabdo NERDTreeClose']
 let g:auto_session_post_restore_cmds = ["NERDTree | wincmd p", "tabdo if empty(getbufline(bufnr(''), 1, '$')) | bd | endif"]
+let MRU_Auto_Close = 1
+let MRU_Use_Current_Window = 1
 lua require('neoscroll').setup()
 lua require('killersheep').setup()
 lua require('Comment').setup()
 lua require('gitsigns').setup()
 lua require('nvim-ts-autotag').setup()
-lua require('telescope').load_extension('harpoon')
 lua require('colorizer').attach_to_buffer(0, { mode = 'background', css = true})
 lua require('auto-session').setup( {auto_restore_enabled = false } )
 let g:rainbow_active = 1
@@ -249,6 +284,7 @@ require('deferred-clipboard').setup {
   fallback = 'unnamedplus',
 }
 EOF
+"
 " Code Runner
 if has('win64') || has('win32') || has('win16')
   lua << EOF
@@ -336,6 +372,8 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 " Configure Plugin Keybinds
+"MRU
+nnoremap <leader>m :MRU<CR>
 " Setup Tab Shortcuts
 nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
 nnoremap <silent>    <C-w> <Cmd>:q<CR>
@@ -376,23 +414,37 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-e> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+lua << EOF
+require("telescope").setup({
+  extensions = {
+    coc = {
+        prefer_locations = true,
+        push_cursor_on_edit = true,
+        timeout = 3000,
+    }
+  },
+})
+require('telescope').load_extension('harpoon')
+require('telescope').load_extension('coc')
+EOF
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
+nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 " Coc
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <Tab>
   \ coc#pum#visible() ? coc#pum#next(1) :
-  \ check_back_space() ? '\<Tab>' :
+  \ CheckBackspace() ? '\<Tab>' :
   \ coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <leader>o <cmd>CocOutline<CR>
 if has('patch-8.1.1564')
   set signcolumn=number
 else
