@@ -112,6 +112,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug '907th/vim-auto-save'
   Plug 'tpope/vim-surround'
+  Plug 'yegappan/mru'
   Plug 'vim-airline/vim-airline'
   Plug 'tpope/vim-commentary'
   Plug 'tc50cal/vim-terminal'
@@ -136,6 +137,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 colorscheme catppuccin_mocha
 set background=dark
 " Setup The Plugins
+let $LANG='en_US.UTF-8'
 let g:rainbow_conf = {
   \ 'guifgs': ['#ec9ca4', '#89cedc', '#b6bdf9', '#a4dc94', '#e4cce4', '#8cacf4', '#f4c4c4', '#c4a4f4']
 \ }
@@ -145,10 +147,11 @@ let g:NERDTreeDirArrowExpandable='+'
 let g:NERDTreeDirArrowCollapsible='~'
 silent! autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-let $LANG='en_US.UTF-8'
 let g:rainbow_active = 1
 silent! let g:auto_save = 1
 let g:coc_disable_startup_warning = 1
+let MRU_Auto_Close = 1
+let MRU_Use_Current_Window = 1
 " Code Runner
 let g:CodeRunnerCommandMap = {
   \ 'python' : 'python3 $fileName',
@@ -161,6 +164,8 @@ let g:CodeRunnerCommandMap = {
   \ }
 nmap <leader>r <plug>CodeRunner
 " Configure Plugin Shortcuts
+"MRU
+nnoremap <leader>m :MRU<CR>
 " Setup Tab Shortcuts
 nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
 nnoremap <silent>    <C-w> <Cmd>BufferClose<CR>
@@ -189,6 +194,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <leader>o <cmd>CocOutline<CR>
 if has('patch-8.1.1564')
   set signcolumn=number
 else
