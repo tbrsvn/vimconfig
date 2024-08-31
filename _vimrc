@@ -80,14 +80,14 @@ if has('win64') || has('win32') || has('win16')
     silent ! powershell -Command "
     \   New-Item -Path ~\vimfiles -Name autoload -Type Directory -Force;
     \   Invoke-WebRequest
-    \   -Uri 'https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/vimfiles/coc-settings.json'
+    \   -Uri 'https://raw.githubusercontent.com/tbrsvn/vimconfig/main/vimfiles/coc-settings.json'
     \   -OutFile ~\vimfiles\coc-settings.json
     \ "
   endif
 else
   if empty(glob('~/.vim/coc-settings.json'))
     silent !curl -fLo ~/.vim/coc-settings.json --create-dirs
-      \ https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/.vim/coc-settings.json
+      \ https://raw.githubusercontent.com/tbrsvn/vimconfig/main/.vim/coc-settings.json
   endif
 endif
 " Install Vim-Plug If Not Found
