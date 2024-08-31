@@ -86,14 +86,14 @@ if has('win64') || has('win32') || has('win16')
     silent ! powershell -Command '
     \   New-Item -Path ~\AppData\Local\nvim -Name autoload -Type Directory -Force;
     \   Invoke-WebRequest
-    \   -Uri 'https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/nvim/coc-settings.json'
+    \   -Uri 'https://raw.githubusercontent.com/tbrsvn/vimconfig/main/nvim/coc-settings.json'
     \   -OutFile ~\AppData\Local\nvim\coc-settings.json
     \ '
   endif
 else
   if empty(glob('~/.config/nvim/coc-settings.json'))
     silent !curl -fLo ~/.config/nvim/coc-settings.json --create-dirs
-      \ https://raw.githubusercontent.com/norok-the-diablo/vimconfig/main/nvim/coc-settings.json
+      \ https://raw.githubusercontent.com/tbrsvn/vimconfig/main/nvim/coc-settings.json
   endif
 endif
 " Install vim-plug if not found
@@ -120,7 +120,7 @@ call plug#begin()
   Plug 'numToStr/Comment.nvim'
   Plug 'EtiamNullam/deferred-clipboard.nvim'
   Plug 'CRAG666/code_runner.nvim'
-  Plug 'Norok-The-Diablo/telescope.nvim'
+  Plug 'tbrsvn/telescope.nvim'
   Plug 'alec-gibson/nvim-tetris'
   Plug 'HiPhish/rainbow-delimiters.nvim'
   Plug 'ThePrimeagen/vim-be-good'
@@ -135,9 +135,9 @@ call plug#begin()
   Plug 'gbprod/stay-in-place.nvim'
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-surround'
-  Plug 'Norok-The-Diablo/minesweeper.nvim'
+  Plug 'tbrsvn/minesweeper.nvim'
   Plug 'tpope/vim-commentary'
-  Plug 'Norok-The-Diablo/alpha-nvim'
+  Plug 'tbrsvn/alpha-nvim'
   Plug 'alanfortlink/blackjack.nvim'
   Plug 'tc50cal/vim-terminal'
   Plug 'NvChad/nvim-colorizer.lua'
@@ -156,11 +156,11 @@ call plug#begin()
   Plug 'stevearc/dressing.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'Norok-The-Diablo/battery.nvim'
+  Plug 'tbrsvn/battery.nvim'
   Plug 'akinsho/bufferline.nvim'
   Plug 'catppuccin/nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'Norok-The-Diablo/telescope.nvim'
+  Plug 'tbrsvn/telescope.nvim'
   Plug 'fannheyward/telescope-coc.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
