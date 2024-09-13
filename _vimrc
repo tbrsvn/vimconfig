@@ -45,6 +45,7 @@ set autoindent
 set nocompatible
 " Turn On Syntax
 syntax enable
+filetype plugin on
 let g:is_posix=1
 " Enable Autocompletion
 set wildmode=longest,list,full
@@ -110,6 +111,7 @@ endif
 call plug#begin()
   Plug 'luochen1990/rainbow'
   Plug 'tpope/vim-fugitive'
+  Plug 'vimwiki/vimwiki'
   Plug '907th/vim-auto-save'
   Plug 'tpope/vim-surround'
   Plug 'yegappan/mru'
