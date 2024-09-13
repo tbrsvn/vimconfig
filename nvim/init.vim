@@ -45,6 +45,7 @@ set autoindent
 set nocompatible
 " Turn On Syntax
 syntax enable
+filetype plugin on
 let g:is_posix=1
 " Enable Autocompletion
 set wildmode=longest,list,full
@@ -138,6 +139,8 @@ call plug#begin()
   Plug 'NvChad/nvim-colorizer.lua'
   Plug 'jghauser/mkdir.nvim'
   Plug 'lewis6991/gitsigns.nvim'
+  Plug 'qadzek/link.vim'
+  Plug 'vimwiki/vimwiki'
   Plug 'frabjous/knap'
   Plug 'karb94/neoscroll.nvim'
   Plug 'nvim-tree/nvim-web-devicons'
