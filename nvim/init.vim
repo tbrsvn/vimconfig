@@ -394,15 +394,15 @@ nnoremap <leader>h :lua require('harpoon.ui').toggle_quick_menu() <CR>
 " Molten
 lua << EOF
 vim.keymap.set("n", "<localleader>mi", ":MoltenInit python3<CR>",
-    { silent = true, desc = "Initialize the plugin" })
+    { silent = true, desc = "Initialize The Plugin" })
 vim.keymap.set("n", "<localleader>e", ":MoltenEvaluateOperator<CR>",
-    { silent = true, desc = "run operator selection" })
+    { silent = true, desc = "Run Operator Selection" })
 vim.keymap.set("n", "<localleader>rl", ":MoltenEvaluateLine<CR>",
-    { silent = true, desc = "evaluate line" })
+    { silent = true, desc = "Evaluate Line" })
 vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>",
-    { silent = true, desc = "re-evaluate cell" })
+    { silent = true, desc = "Re-evaluate Cell" })
 vim.keymap.set("v", "<localleader>r", ":<C-u>MoltenEvaluateVisual<CR>gv",
-    { silent = true, desc = "evaluate visual selection" })
+    { silent = true, desc = "Evaluate Visual Selection" })
 EOF
 let g:molten_auto_image_popup = 1
 let g:molten_auto_open_html_in_browser = 1
