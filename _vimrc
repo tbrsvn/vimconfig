@@ -166,7 +166,7 @@ let g:CodeRunnerCommandMap = {
   \ }
 nmap <leader>r <plug>CodeRunner
 " Configure Plugin Shortcuts
-"MRU
+" MRU
 nnoremap <leader>m :MRU<CR>
 " Setup Tab Shortcuts
 nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
@@ -184,13 +184,14 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-function! s:check_back_space() abort
+" Coc
+function! CheckBackspace() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 inoremap <silent><expr> <Tab>
   \ coc#pum#visible() ? coc#pum#next(1) :
-  \ check_back_space() ? '\<Tab>' :
+  \ CheckBackspace() ? '\<Tab>' :
   \ coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)

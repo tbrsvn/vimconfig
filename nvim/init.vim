@@ -1,4 +1,4 @@
-"Settings
+" Settings
 " Show Line Numbers
 set number relativenumber
 " Wrap Text
@@ -129,6 +129,7 @@ call plug#begin()
   Plug 'yegappan/mru'
   Plug 'windwp/nvim-ts-autotag'
   Plug 'gbprod/stay-in-place.nvim'
+  Plug '3rd/image.nvim'
   Plug 'mbbill/undotree'
   Plug 'tpope/vim-surround'
   Plug 'tbrsvn/minesweeper.nvim'
@@ -138,6 +139,7 @@ call plug#begin()
   Plug 'tc50cal/vim-terminal'
   Plug 'NvChad/nvim-colorizer.lua'
   Plug 'jghauser/mkdir.nvim'
+  Plug 'benlubas/molten-nvim', {'do': ':UpdateRemotePlugins'}
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'qadzek/link.vim'
   Plug 'vimwiki/vimwiki'
@@ -287,8 +289,10 @@ require('deferred-clipboard').setup {
   fallback = 'unnamedplus',
 }
 EOF
-"
 " Code Runner
+if has('win64') || has('win32') || has('win16')
+     silent execute '!cmd /c copy "' . $USERPROFILE . '\\AppData\\Local\\nvim\\rplugin.vim" "' . $USERPROFILE . '\\AppData\\Local\\nvim-data\\rplugin.vim"'
+endif
 if has('win64') || has('win32') || has('win16')
   lua << EOF
   require('code_runner').setup( {
@@ -375,7 +379,7 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 " Configure Plugin Keybinds
-"MRU
+" MRU
 nnoremap <leader>m :MRU<CR>
 " Setup Tab Shortcuts
 nnoremap <silent>    <C-t> :tabnew<CR>:NERDTreeToggle<CR>
@@ -387,6 +391,22 @@ nnoremap <leader>ut :UndotreeToggle<CR>
 " Harpoon
 nnoremap <leader>a :lua require('harpoon.mark').add_file() <CR>
 nnoremap <leader>h :lua require('harpoon.ui').toggle_quick_menu() <CR>
+" Molten
+lua << EOF
+vim.keymap.set("n", "<localleader>mi", ":MoltenInit python3<CR>",
+    { silent = true, desc = "Initialize the plugin" })
+vim.keymap.set("n", "<localleader>e", ":MoltenEvaluateOperator<CR>",
+    { silent = true, desc = "run operator selection" })
+vim.keymap.set("n", "<localleader>rl", ":MoltenEvaluateLine<CR>",
+    { silent = true, desc = "evaluate line" })
+vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>",
+    { silent = true, desc = "re-evaluate cell" })
+vim.keymap.set("v", "<localleader>r", ":<C-u>MoltenEvaluateVisual<CR>gv",
+    { silent = true, desc = "evaluate visual selection" })
+EOF
+let g:molten_auto_image_popup = 1
+let g:molten_auto_open_html_in_browser = 1
+let g:molten_auto_open_output = 1
 " Knap And Markdown Preview
 if has('win64') || has('win32') || has('win16')
   nmap <F5> <Plug>MarkdownPreview
@@ -441,7 +461,7 @@ function! CheckBackspace() abort
 endfunction
 inoremap <silent><expr> <Tab>
   \ coc#pum#visible() ? coc#pum#next(1) :
-  \ CheckBackspace() ? '\<Tab>' :
+  \ CheckBackspace() ? '<Tab>' :
   \ coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
