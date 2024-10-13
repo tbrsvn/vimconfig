@@ -191,7 +191,7 @@ function! CheckBackspace() abort
 endfunction
 inoremap <silent><expr> <Tab>
   \ coc#pum#visible() ? coc#pum#next(1) :
-  \ CheckBackspace() ? '\<Tab>' :
+  \ CheckBackspace() ? '<Tab>' :
   \ coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
